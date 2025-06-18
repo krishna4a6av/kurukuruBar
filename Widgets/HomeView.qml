@@ -1,0 +1,425 @@
+pragma ComponentBehavior: Bound
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Effects
+import QtQuick.Controls
+import Quickshell
+import Quickshell.Widgets
+import "../Generics/" as Gen
+import "../Data/" as Dat
+import "../Widgets/" as Wid
+
+Rectangle {
+  color: "transparent"
+  
+  property bool themeSelectorExpanded: false
+  
+  RowLayout {
+    anchors.fill: parent
+    anchors.margins: 10
+    spacing: 10
+    
+    // Left side - Greeting and mssg | op's greeting widget
+    Rectangle {
+      Layout.fillHeight: true
+      Layout.fillWidth: !themeSelectorExpanded
+      Layout.preferredWidth: themeSelectorExpanded ? 60 : 100
+      Layout.minimumWidth: themeSelectorExpanded ? 60 : 100
+      color: Dat.Colors.surface_container
+      radius: 20
+      
+      Behavior on Layout.preferredWidth {
+        NumberAnimation {
+          duration: 300
+          easing.type: Easing.OutCubic
+        }
+      }
+      
+      StackView {
+        id: stack
+        anchors.fill: parent
+        visible: !themeSelectorExpanded
+        opacity: themeSelectorExpanded ? 0 : 1
+        
+        Behavior on opacity {
+          NumberAnimation {
+            duration: 300
+            easing.type: Easing.OutCubic
+          }
+        }
+        
+        initialItem: Wid.GreeterWidget {
+          height: stack.height
+          width: stack.width
+        }
+        
+        popEnter: Transition {
+          ParallelAnimation {
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedDecelTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
+              from: 0
+              property: "opacity"
+              to: 1
+            }
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedDecelTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
+              from: -100
+              property: "y"
+            }
+          }
+        }
+        
+        popExit: Transition {
+          ParallelAnimation {
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasized
+              from: 1
+              property: "opacity"
+              to: 0
+            }
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedAccelTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasizedAccel
+              property: "y"
+              to: 100
+            }
+          }
+        }
+        
+        pushEnter: Transition {
+          ParallelAnimation {
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasized
+              from: 0
+              property: "opacity"
+              to: 1
+            }
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedDecelTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
+              from: 100
+              property: "y"
+            }
+          }
+        }
+        
+        pushExit: Transition {
+          ParallelAnimation {
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasized
+              from: 1
+              property: "opacity"
+              to: 0
+            }
+          }
+          NumberAnimation {
+            duration: Dat.MaterialEasing.emphasizedAccelTime
+            easing.bezierCurve: Dat.MaterialEasing.emphasizedAccel
+            property: "y"
+            to: -100
+          }
+        }
+        
+        replaceEnter: Transition {
+          ParallelAnimation {
+            PropertyAnimation {
+              duration: 0
+              property: "opacity"
+              to: 1
+            }
+            NumberAnimation {
+              duration: Dat.MaterialEasing.emphasizedDecelTime
+              easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
+              from: 100
+              property: "y"
+            }
+          }
+        }
+        
+        replaceExit: Transition {
+          NumberAnimation {
+            duration: Dat.MaterialEasing.emphasizedAccelTime
+            easing.bezierCurve: Dat.MaterialEasing.emphasizedAccel
+            from: 1
+            property: "opacity"
+            to: 0
+          }
+        }
+      }
+      
+      // Current theme display when collapsed
+      Rectangle {
+        anchors.fill: parent
+        visible: themeSelectorExpanded
+        opacity: themeSelectorExpanded ? 1 : 0
+        color: "transparent"
+
+        Rectangle {
+          anchors.fill: parent
+          color: Dat.Colors.primary
+          radius: 20
+        }
+        
+        Behavior on opacity {
+          NumberAnimation {
+            duration: 300
+            easing.type: Easing.OutCubic
+          }
+        }
+        
+        ColumnLayout {
+          anchors.centerIn: parent
+          spacing: 8
+          
+          // Current theme name (vertical)
+          Text {
+            Layout.alignment: Qt.AlignHCenter
+            text: Dat.ThemeManager.getThemeName()
+
+            font.pixelSize: 14
+            font.weight: Font.Bold
+            rotation: -90
+            color: Dat.Colors.on_primary
+            horizontalAlignment: Text.AlignHCenter
+            lineHeight: 1
+          }
+          
+
+        }
+      }
+    }
+    
+    // Right side - Collapsible Theme Selector
+    Rectangle {
+      Layout.fillHeight: true
+      Layout.preferredWidth: themeSelectorExpanded ? 210 : 50
+      Layout.minimumWidth: themeSelectorExpanded ? 180 : 50
+      Layout.maximumWidth: themeSelectorExpanded ? 250 : 50
+      color: Dat.Colors.surface_container
+      radius: 20
+      
+      Behavior on Layout.preferredWidth {
+        NumberAnimation {
+          duration: 300
+          easing.type: Easing.OutCubic
+        }
+      }
+      
+      // Collapsed state - Vertical "Themes" button
+      Rectangle {
+        anchors.fill: parent
+        visible: !themeSelectorExpanded
+        color: "transparent"
+        
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          cursorShape: Qt.PointingHandCursor
+          
+          onClicked: {
+            themeSelectorExpanded = true
+          }
+          
+          Rectangle {
+            anchors.fill: parent
+            color: parent.containsMouse ? Dat.Colors.secondary_container : Dat.Colors.primary
+            radius: 20
+            
+            Behavior on color {
+              ColorAnimation {
+                duration: 200
+                easing.type: Easing.OutCubic
+              }
+            }
+          }
+        }
+        
+        Text {
+          anchors.centerIn: parent
+          text: "T\nH\nE\nM\nE\nS"
+          font.pixelSize: 12
+          font.weight: Font.Bold
+          color: Dat.Colors.on_primary
+          horizontalAlignment: Text.AlignHCenter
+          lineHeight: 1.2
+        }
+      }
+      
+      // Expanded state - Full theme selector
+      RowLayout {
+        anchors.fill: parent
+        anchors.margins: 12
+        spacing: 5
+        visible: themeSelectorExpanded
+
+        //Theme selection scroll
+        ScrollView {
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          contentWidth: availableWidth
+
+          ScrollBar.vertical.policy: ScrollBar.AlwaysOff
+          
+          ColumnLayout {
+            width: parent.width
+            spacing: 10
+            
+            Repeater {
+              model: Dat.ThemeManager.themes
+              delegate: Rectangle {
+                required property int index
+                required property var modelData
+                
+                Layout.fillWidth: true
+                Layout.preferredHeight: 45
+                
+                color: mouseArea.containsMouse ? 
+                       Dat.Colors.surface_container_high : 
+                       (index === Dat.ThemeManager.currentThemeIndex ? 
+                        Dat.Colors.primary_container : 
+                        Dat.Colors.surface_container_low)
+                
+                radius: 12
+                border.width: index === Dat.ThemeManager.currentThemeIndex ? 3 : 1
+                border.color: index === Dat.ThemeManager.currentThemeIndex ? 
+                             Dat.Colors.primary : 
+                             Dat.Colors.outline_variant
+                
+                Behavior on color {
+                  ColorAnimation {
+                    duration: 200
+                    easing.type: Easing.OutCubic
+                  }
+                }
+                
+                Behavior on border.color {
+                  ColorAnimation {
+                    duration: 200
+                    easing.type: Easing.OutCubic
+                  }
+                }
+
+                RowLayout {
+                  anchors.fill: parent
+                  anchors.margins: 10
+                  spacing: 10
+
+                  //Left dot on the themes list
+                  Rectangle {
+                    Layout.preferredWidth: 15
+                    Layout.preferredHeight: 15
+                    radius: 8
+                    color: index === Dat.ThemeManager.currentThemeIndex ? 
+                           Dat.Colors.primary : 
+                           Dat.Colors.outline_variant
+                    
+                    Rectangle {
+                      anchors.centerIn: parent
+                      width: 9
+                      height: 9
+                      radius: 6
+                      color: Dat.Colors.on_primary
+                      visible: index === Dat.ThemeManager.currentThemeIndex
+                    }
+                  }
+                  
+                  //Theme name text
+                  Text {
+                    Layout.fillWidth: true
+                    text: modelData.name
+                    font.pixelSize: 14
+                    font.weight: index === Dat.ThemeManager.currentThemeIndex ? 
+                                Font.DemiBold : Font.Normal
+                    color: index === Dat.ThemeManager.currentThemeIndex ? 
+                           Dat.Colors.on_primary_container : 
+                           Dat.Colors.on_surface
+                    verticalAlignment: Text.AlignVCenter
+                  }
+
+                  //Tick on right of active theme
+                  Text {
+                    Layout.preferredWidth: 12
+                    Layout.preferredHeight: 12
+                    text: "✓"
+                    font.pixelSize: 10
+                    font.weight: Font.Bold
+                    color: Dat.Colors.primary
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    visible: index === Dat.ThemeManager.currentThemeIndex
+                  }
+                }
+                
+                MouseArea {
+                  id: mouseArea
+                  anchors.fill: parent
+                  hoverEnabled: true
+                  cursorShape: Qt.PointingHandCursor
+                  
+                  onClicked: {
+                    if (index !== Dat.ThemeManager.currentThemeIndex) {
+                      Dat.ThemeManager.switchToTheme(index)
+                    }
+                  }
+                }
+              }
+            }
+            
+            Item {
+              Layout.fillHeight: true
+            }
+          }
+        }
+        
+        // Close button positioned at far-right
+        Item {
+          Layout.fillWidth: true
+          Layout.preferredHeight: 40
+            
+          Rectangle {
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.topMargin: 0
+            anchors.leftMargin: 0
+            width: 24
+            height: 24
+            radius: 12
+            color: closeMouseArea.containsMouse ? Dat.Colors.surface_container_high : "transparent"
+              
+            Behavior on color {
+              ColorAnimation {
+                duration: 200
+                easing.type: Easing.OutCubic
+              }
+            }
+              
+            Text {
+              anchors.centerIn: parent
+              text: ""
+              font.pixelSize: 16
+              font.weight: Font.Bold
+              color: Dat.Colors.on_surface
+            }
+              
+            MouseArea {
+              id: closeMouseArea
+              anchors.fill: parent
+              hoverEnabled: true
+              cursorShape: Qt.PointingHandCursor
+                
+              onClicked: {
+                themeSelectorExpanded = false
+              }
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
