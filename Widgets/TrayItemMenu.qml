@@ -97,7 +97,7 @@ Rectangle {
             id: text
             anchors.fill: parent
             color: (entry.modelData?.enabled ?? true) ? Dat.Colors.on_surface : Dat.Colors.primary
-            font.pointSize: 11
+            font.pointSize: 10
             text: entry.modelData?.text ?? ""
             verticalAlignment: Text.AlignVCenter
           }
@@ -122,7 +122,7 @@ Rectangle {
           Text {
             anchors.centerIn: parent
             color: Dat.Colors.on_surface
-            font.pointSize: 11
+            font.pointSize: 10
             text: "▶"
           }
         }
