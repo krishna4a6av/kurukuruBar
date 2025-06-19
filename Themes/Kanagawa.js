@@ -1,6 +1,6 @@
 const theme = {
   background: "#1f1f28",                    // sumi ink base
-  error: "#e46876",                         // kanagawa red (diff.delete)
+  error: "#e46876",                         // kanagawa red 
   error_container: "#5a2a33",               // deep muted red
   inverse_on_surface: "#1f1f28",            // base
   inverse_primary: "#c8c093",               // warm parchment
@@ -29,7 +29,7 @@ const theme = {
   primary_fixed: "#c8c093",                 // gold
   primary_fixed_dim: "#b5aa78",             // dimmed yellow
   scrim: "#000000",
-  secondary: "#7fb4ca",                     // cyan (diff.add)
+  secondary: "#7fb4ca",                     // cyan
   secondary_container: "#334c56",           // dark teal
   secondary_fixed: "#7fb4ca",
   secondary_fixed_dim: "#6fa0b3",

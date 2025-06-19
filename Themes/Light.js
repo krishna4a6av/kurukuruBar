@@ -1,7 +1,7 @@
   // light theme for testing purposes
   // feel free to uncomment to get flash banged lol
   // op's opinion I thik it looks good :)
-  // included in js files to have continuity files lmao
+  // included in js files to have continuity lmao
 const theme = {
   background: "#f4fafb",
   error: "#ba1a1a",

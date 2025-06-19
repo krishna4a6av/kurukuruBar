@@ -1,4 +1,3 @@
-// Graphite Pink Theme Colors 
 const theme = {
   background: "#0e0e10",
   error: "#ff5f75",

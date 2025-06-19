@@ -15,7 +15,7 @@ ShellRoot {
   // Panes.BottomLayer {
   // }
 
-  //Dowanwards arrow when bar is collapsed 
+  //Dowanwards arrow when bar is collapsed to bring back the menu
   Panes.CollapseIndicatorPane {
     id: collapseIndicator
   }

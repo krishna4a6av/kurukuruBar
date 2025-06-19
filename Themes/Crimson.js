@@ -1,3 +1,4 @@
+//one of two light themes
 const theme = {
   background: "#fff1f1",                    // soft warm pink
   error: "#e0182d",                         // strong crimson red

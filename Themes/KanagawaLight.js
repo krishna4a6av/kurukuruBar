@@ -1,6 +1,6 @@
 const theme = {
   background: "#f2ecbc",                    // light parchment
-  error: "#c34043",                         // kanagawa red (diff.delete)
+  error: "#c34043",                         // kanagawa red 
   error_container: "#f5b1b0",               // soft red pink
   inverse_on_surface: "#f2ecbc",            // light base
   inverse_primary: "#54546d",               // muted graphite
@@ -24,7 +24,7 @@ const theme = {
   on_tertiary_fixed_variant: "#985f82",     // plum
   outline: "#a6a69c",                       // warm gray
   outline_variant: "#dcd7ba",               // soft border
-  primary: "#54546d",                       // graphite text (from keywords)
+  primary: "#54546d",                       // graphite text
   primary_container: "#dcd7ba",             // light gold
   primary_fixed: "#54546d",                 // graphite
   primary_fixed_dim: "#6e6a86",             // kanagawa indigo

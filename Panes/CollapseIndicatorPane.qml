@@ -34,18 +34,15 @@ Scope {
 
       Rectangle {
         id: collapseIndicator
- 
         // Properties for sizing
         readonly property int indicatorHeight: 20
         readonly property int indicatorWidth: 40
         readonly property int arrowSize: 12
         
-        // Positioning
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 2
         
-        // Appearance
         width: indicatorWidth
         height: indicatorHeight
         radius: 10
@@ -57,7 +54,6 @@ Scope {
         visible: Dat.Globals.notchState === "COLLAPSED"
         opacity: Dat.Globals.notchState === "COLLAPSED" ? 1 : 0
         
-        // Smooth transitions
         Behavior on opacity {
           NumberAnimation {
             duration: Dat.MaterialEasing.standardTime
@@ -99,7 +95,6 @@ Scope {
           }
         }
         
-        // Mouse interaction
         MouseArea {
           id: clickArea
           
@@ -108,7 +103,7 @@ Scope {
           cursorShape: Qt.PointingHandCursor
           
           onClicked: {
-            // Extend the collapsed bar to EXPANDED state | REST might lead to wierd behaviour
+            // Extend the collapsed bar to EXPANDED state | using REST might lead to wierd behaviour
             Dat.Globals.notchState = "EXPANDED";
           }
           
@@ -131,35 +126,7 @@ Scope {
             easing.bezierCurve: Dat.MaterialEasing.standard
           }
         }
-        
-        // Optional: Subtle pulsing animation to draw attention
-        SequentialAnimation {
-          id: pulseAnimation
-          running: collapseIndicator.visible
-          loops: Animation.Infinite
-          
-          NumberAnimation {
-            target: collapseIndicator
-            property: "opacity"
-            from: 1.0
-            to: 0.7
-            duration: 1500
-            easing.bezierCurve: Dat.MaterialEasing.standard
-          }
-          
-          NumberAnimation {
-            target: collapseIndicator
-            property: "opacity"
-            from: 0.7
-            to: 1.0
-            duration: 1500
-            easing.bezierCurve: Dat.MaterialEasing.standard
-          }
-          
-          PauseAnimation {
-            duration: 500
-          }
-        }
+
       }
     }
   }

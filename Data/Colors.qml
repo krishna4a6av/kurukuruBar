@@ -4,7 +4,7 @@ import QtQuick
 import "../Data/" as Dat
 
 Singleton {
-  // Use ThemeManager instead of direct import
+  // To use ThemeManager instead of direct import
   readonly property color background: Dat.ThemeManager.currentTheme ? Dat.ThemeManager.currentTheme.background : "#000000"
   readonly property color error: Dat.ThemeManager.currentTheme ? Dat.ThemeManager.currentTheme.error : "#ff0000"
   readonly property color error_container: Dat.ThemeManager.currentTheme ? Dat.ThemeManager.currentTheme.error_container : "#ff0000"
@@ -64,7 +64,6 @@ Singleton {
   Connections {
     target: Dat.ThemeManager
     function onThemeChanged() {
-      // Force property updates by emitting change signals
       // This ensures all UI elements update when theme changes
     }
   }
