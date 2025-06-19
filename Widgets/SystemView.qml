@@ -77,11 +77,11 @@ Rectangle {
         Rectangle {
           id: monitorRect
 
-          Layout.fillHeight: true
-          Layout.fillWidth: true
           clip: true
           color: Dat.Colors.surface_container
           radius: 10 * Dat.Globals.notchScale
+          implicitWidth: 150 * Dat.Globals.notchScale
+          implicitHeight: 100 * Dat.Globals.notchScale
 
           RowLayout {
             anchors.fill: parent
@@ -98,9 +98,9 @@ Rectangle {
 
                 anchors.fill: parent
                 color: Dat.Colors.primary
-                font.pointSize: 32 * Dat.Globals.notchScale
+                font.pointSize: 28 * Dat.Globals.notchScale
                 horizontalAlignment: Text.AlignHCenter
-                text: ""
+                text: ""
                 verticalAlignment: Text.AlignVCenter
               }
             }

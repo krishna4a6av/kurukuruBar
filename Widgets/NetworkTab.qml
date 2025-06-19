@@ -10,12 +10,13 @@ import "../Widgets/" as Wid
 
 Rectangle {
   id: root
+  color: "transparent"
+  radius: 20 * Dat.Globals.notchScale
+
   property int index: SwipeView.index
   property bool isCurrent: SwipeView.isCurrentItem
-  color: "transparent"
-  radius: 20
-  
-  // Network data properties
+
+  // Network data
   property string currentConnection: "Not Connected"
   property string connectionType: "Unknown"
   property string uploadSpeed: "0 KB/s"
@@ -23,10 +24,8 @@ Rectangle {
   property real uploadSpeedValue: 0
   property real downloadSpeedValue: 0
   property bool isConnected: false
-  
 
-  
-  // Network monitoring processes
+  // Active connection info
   Process {
     id: connectionInfo
     running: true
@@ -50,7 +49,8 @@ Rectangle {
       }
     }
   }
-  
+
+  // Speed monitoring
   Process {
     id: speedInfo
     running: root.isConnected
@@ -59,7 +59,7 @@ Rectangle {
       property var lastRx: 0
       property var lastTx: 0
       property var lastTime: Date.now()
-      
+
       onRead: data => {
         if (data.trim()) {
           const parts = data.trim().split(' ');
@@ -67,18 +67,18 @@ Rectangle {
             const currentTime = Date.now();
             const currentRx = parseInt(parts[0]);
             const currentTx = parseInt(parts[1]);
-            
+
             if (lastRx > 0 && lastTx > 0) {
               const timeDiff = (currentTime - lastTime) / 1000;
               const rxSpeed = Math.max(0, (currentRx - lastRx) / timeDiff);
               const txSpeed = Math.max(0, (currentTx - lastTx) / timeDiff);
-              
+
               root.downloadSpeed = formatSpeed(rxSpeed);
               root.uploadSpeed = formatSpeed(txSpeed);
               root.downloadSpeedValue = rxSpeed;
               root.uploadSpeedValue = txSpeed;
             }
-            
+
             lastRx = currentRx;
             lastTx = currentTx;
             lastTime = currentTime;
@@ -87,36 +87,33 @@ Rectangle {
       }
     }
   }
-  
+
   Timer {
     interval: 2000
     repeat: true
     running: true
     onTriggered: {
       connectionInfo.running = true;
-      if (root.isConnected) {
-        speedInfo.running = true;
-      }
+      if (root.isConnected) speedInfo.running = true;
     }
   }
-  
+
   function formatSpeed(bytesPerSecond) {
     if (bytesPerSecond < 1024) return Math.round(bytesPerSecond) + " B/s";
     if (bytesPerSecond < 1024 * 1024) return (bytesPerSecond / 1024).toFixed(1) + " KB/s";
     if (bytesPerSecond < 1024 * 1024 * 1024) return (bytesPerSecond / (1024 * 1024)).toFixed(1) + " MB/s";
     return (bytesPerSecond / (1024 * 1024 * 1024)).toFixed(1) + " GB/s";
   }
-  
+
   function formatProgress(speedValue) {
-    // Normalize speed to percentage (0-100) based on 10MB/s max
-    const maxSpeed = 10 * 1024 * 1024; // 10 MB/s in bytes
+    const maxSpeed = 10 * 1024 * 1024;
     return Math.min((speedValue / maxSpeed) * 100, 100);
   }
-  
+
   function getConnectionIcon(type) {
-    switch(type) {
-      case 'WiFi': return "󰤨";
-      case 'Ethernet': return "󰈀";
+    switch (type) {
+      case "802-11-WIRELESS": return "󰤨";
+      case "Ethernet": return "󰈀";
       default: return "󰲝";
     }
   }
@@ -124,75 +121,65 @@ Rectangle {
   RowLayout {
     anchors.fill: parent
     spacing: 0
-    
+
     Rectangle {
       Layout.fillHeight: true
       Layout.fillWidth: true
       clip: true
+      radius: 20 * Dat.Globals.notchScale
       color: Dat.Colors.surface_container_high
-      radius: 20
-      
+
       ColumnLayout {
-        id: rightArea
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottomMargin: 13
-        anchors.top: parent.top
-        spacing: 7
-        
-        // Side-by-side Circular Progress
+        anchors.fill: parent
+        anchors.margins: 7 * Dat.Globals.notchScale
+        spacing: 5 * Dat.Globals.notchScale
+
+        // Progress meters
         Rectangle {
           Layout.fillHeight: true
           Layout.fillWidth: true
+          Layout.preferredHeight: 120 * Dat.Globals.notchScale
+          Layout.maximumHeight: parent.height * 0.75
+          radius: 20 * Dat.Globals.notchScale
           color: Dat.Colors.surface_container
-          radius: 20
-          
+
           RowLayout {
             anchors.fill: parent
-            anchors.margins: 7
-            spacing: 8
-            
+            spacing: 8 * Dat.Globals.notchScale
+
             Repeater {
-              id: networkRepeater
-              
               model: [
-                {
-                  icon: "",
-                  label: "Download"
-                },
-                {
-                  icon: "",
-                  label: "Upload"
-                }
+                { icon: "", label: "Download" },
+                { icon: "", label: "Upload" }
               ]
-              
+
               delegate: Item {
-                id: itemRoot
-                
                 required property int index
                 required property var modelData
                 property string speed: (index === 0) ? root.downloadSpeed : root.uploadSpeed
                 property real speedValue: (index === 0) ? root.downloadSpeedValue : root.uploadSpeedValue
                 property color circleColor: (index === 0) ? Dat.Colors.primary : Dat.Colors.secondary
-                
-                Layout.fillHeight: true
+
                 Layout.fillWidth: true
-                
-                Gen.CircularProgress {
-                  anchors.centerIn: parent
-                  size: Math.max(80, Math.min(parent.width, parent.height + 10))
-                  value: formatProgress(itemRoot.speedValue) / 100
-                  primaryColor: itemRoot.circleColor
-                  secondaryColor: Dat.Colors.primary_container
-                  lineWidth: 7
-                  rotation: -205
-                  degreeLimit: 290
-                }
+                Layout.fillHeight: true
+
+                Item {
+                  anchors.fill: parent
+
+                  Gen.CircularProgress {
+                    anchors.centerIn: parent
+                    size: Math.min(parent.width, parent.height) * 1
+                    value: formatProgress(speedValue) / 100
+                    primaryColor: circleColor
+                    secondaryColor: Dat.Colors.primary_container
+                    lineWidth: 7 * Dat.Globals.notchScale
+                    rotation: -205
+                    degreeLimit: 290
+                  }
 
                   Text {
                     anchors.centerIn: parent
-                    text: itemRoot.speed
+                    text: speed
                     color: Dat.Colors.primary
                     font.bold: true
                     font.pointSize: 13 * Dat.Globals.notchScale
@@ -200,67 +187,85 @@ Rectangle {
 
                   Rectangle {
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: this.anchors.rightMargin
                     anchors.right: parent.right
-                    anchors.rightMargin: 9
+                    anchors.margins: 8 * Dat.Globals.notchScale
+                    width: 35 * Dat.Globals.notchScale
+                    height: 35 * Dat.Globals.notchScale
+                    radius: 17.5 * Dat.Globals.notchScale
                     color: Dat.Colors.primary
-                    height: this.width
-                    radius: this.width
-                    width: 35
 
                     Text {
                       anchors.centerIn: parent
+                      text: modelData.icon
+                      font.pointSize: 15 * Dat.Globals.notchScale
                       color: Dat.Colors.on_primary
-                      font.pointSize: 15
-                      text: itemRoot.modelData.icon
                     }
+                  }
                 }
               }
             }
           }
         }
-        
-        // Connection Info at Bottom - Small Text
-        Rectangle {
-          Layout.alignment: Qt.AlignCenter
+
+        // Connection Info - Reorganized like the battery reference
+        RowLayout {
+          id: connectionInfoLayout
           Layout.fillWidth: true
-          Layout.preferredHeight: 21
-          color: "transparent"
-          
-          ColumnLayout {
-            anchors.fill: parent
-            spacing: 2
+          Layout.preferredHeight: Math.max(20 * Dat.Globals.notchScale, parent.height * 0.25)
+          spacing: 5 * Dat.Globals.notchScale
+
+          // Left: Connection name
+          Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            color: "transparent"
             
             Text {
-              text: root.currentConnection
+              anchors.fill: parent
+              anchors.margins: 2 * Dat.Globals.notchScale
+              text: "  " + root.currentConnection
               color: Dat.Colors.on_surface
-              font.pointSize: 9 * Dat.Globals.notchScale
               font.bold: true
-              Layout.fillWidth: true
-              horizontalAlignment: Text.AlignHCenter
-            }
-            
-            Text {
-              text: root.connectionType + (root.isConnected ? " • Connected" : " • Disconnected")
-              color: root.isConnected ? Dat.Colors.on_surface : Dat.Colors.error
-              font.pointSize: 7 * Dat.Globals.notchScale
-              Layout.alignment: Qt.AlignHCenter
-              horizontalAlignment: Text.AlignHCenter
+              font.pointSize: 9 * Dat.Globals.notchScale
+              horizontalAlignment: Text.AlignLeft
+              verticalAlignment: Text.AlignVCenter
             }
           }
-        }
-      }
-    }
-    
-    Item {
-      Layout.fillHeight: true
-      implicitWidth: 30 * Dat.Globals.notchScale
-      
-      ColumnLayout {
-        anchors.verticalCenter: parent.verticalCenter
-        width: parent.width
-        
-        Wid.SessionDots {
+
+          // Center: Connection status with icon
+          Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.preferredWidth: 2 * Dat.Globals.notchScale
+            color: "transparent"
+            
+            Text {
+              anchors.centerIn: parent
+              anchors.margins: 2 * Dat.Globals.notchScale
+              text: getConnectionIcon(root.connectionType) + "   " + (root.isConnected ? "Connected" : "Disconnected")
+              color: root.isConnected ? Dat.Colors.on_surface : Dat.Colors.error
+              font.pointSize: 8 * Dat.Globals.notchScale
+              horizontalAlignment: Text.AlignHCenter
+              verticalAlignment: Text.AlignVCenter
+            }
+          }
+
+          // Right: Connection type
+          Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            color: "transparent"
+            
+            Text {
+              anchors.fill: parent
+              anchors.margins: 2 * Dat.Globals.notchScale
+              text: root.connectionType
+              color: Dat.Colors.on_surface
+              font.pointSize: 9 * Dat.Globals.notchScale
+              horizontalAlignment: Text.AlignRight
+              verticalAlignment: Text.AlignVCenter
+            }
+          }
         }
       }
     }

@@ -40,19 +40,19 @@ Scope {
       Rectangle {
         id: notchRect
 
-        readonly property int baseHeight: 1
-        readonly property int baseWidth: 200 * notchScale
-        readonly property int restHeight: 28
-        readonly property int restWidth: 700* notchScale 
-        readonly property int expandedHeight: 32
-        readonly property int expandedWidth: 800 * notchScale
-        readonly property int fullHeight: 220 * notchScale
+        readonly property int baseHeight: 1 * Dat.Globals.notchScale
+        readonly property int baseWidth: 200 * Dat.Globals.notchScale
+        readonly property int restHeight: 28 * Dat.Globals.notchScale
+        readonly property int restWidth: 700 * Dat.Globals.notchScale 
+        readonly property int expandedHeight: 32 * Dat.Globals.notchScale
+        readonly property int expandedWidth: 800 * Dat.Globals.notchScale
+        readonly property int fullHeight: 220 * Dat.Globals.notchScale
         readonly property int fullWidth: this.expandedWidth
         property real notchScale: Dat.Globals.notchScale
 
         anchors.horizontalCenter: parent.horizontalCenter
-        bottomLeftRadius: 20
-        bottomRightRadius: 20
+        bottomLeftRadius: 20 * Dat.Globals.notchScale
+        bottomRightRadius: 20 * Dat.Globals.notchScale
         clip: true
         color: Dat.Colors.withAlpha(Dat.Colors.background, (Dat.Globals.actWinName == "desktop" && Dat.Globals.notchState != "FULLY_EXPANDED") ? 0.79 : 0.89)
         state: Dat.Globals.notchState 
@@ -322,7 +322,7 @@ Scope {
           id: notchArea
 
           property real prevY: 0
-          readonly property real sensitivity: 5
+          readonly property real sensitivity: 5 * Dat.Globals.notchScale
           property bool tracing: false
           property real velocity: 0
 
@@ -402,7 +402,7 @@ Scope {
               Layout.fillWidth: true
               Layout.maximumHeight: notchRect.expandedHeight
               // makes collapse animation look a tiny bit neater
-              Layout.minimumHeight: notchRect.expandedHeight - 10
+              Layout.minimumHeight: notchRect.expandedHeight - (10 * Dat.Globals.notchScale)
             }
 
             ExpandedPane {
@@ -420,16 +420,16 @@ Scope {
 
         readonly property int baseHeight: 0
         readonly property int baseWidth: 0
-        // readonly property int fullHeight: 300
-        readonly property int fullWidth: 500
-        readonly property int popupHeight: 100
-        readonly property int popupWidth: 430
+        // readonly property int fullHeight: 300 * Dat.Globals.notchScale
+        readonly property int fullWidth: 500 * Dat.Globals.notchScale
+        readonly property int popupHeight: 100 * Dat.Globals.notchScale
+        readonly property int popupWidth: 430 * Dat.Globals.notchScale
 
         anchors.horizontalCenter: notchRect.horizontalCenter
         anchors.top: notchRect.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 10 * Dat.Globals.notchScale
         color: Dat.Colors.surface
-        radius: 20
+        radius: 20 * Dat.Globals.notchScale
         state: Dat.Globals.notifState
 
         states: [

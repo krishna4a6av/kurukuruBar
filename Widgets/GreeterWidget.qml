@@ -67,9 +67,9 @@ ColumnLayout {
   Rectangle {
     id: informationRect
     Layout.fillWidth: true
-    Layout.preferredHeight: 60*Dat.Globals.notchScale
+    Layout.preferredHeight: 50 * Dat.Globals.notchScale
     color: Dat.Colors.surface_container
-    radius: 20
+    radius: 20 * Dat.Globals.notchScale
 
     Text {
       anchors.centerIn: parent
