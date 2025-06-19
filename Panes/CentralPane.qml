@@ -86,7 +86,7 @@ Rectangle {
       // the page indicator
       Layout.leftMargin: 8 * Dat.Globals.notchScale
       color: Dat.Colors.surface_container_low
-      implicitHeight: (tabCols.height + 20) * Dat.Globals.notchScale
+      implicitHeight: 160 * Dat.Globals.notchScale
       implicitWidth: 38 * Dat.Globals.notchScale
       radius: 20 * Dat.Globals.notchScale
 
