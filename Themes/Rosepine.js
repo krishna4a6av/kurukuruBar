@@ -1,56 +1,53 @@
 const theme = {
-  background: "#15142c",                    // very dark navy
-  error: "#f38ba8",                         // catppuccin red
-  error_container: "#4c2a32",               // darker red
-  inverse_on_surface: "#15142c",            // base
-  inverse_primary: "#d9bcbc",               // light rose (highlight)
-  inverse_surface: "#998da2",               // text
-  on_background: "#998da2",                 // text
-  on_error: "#15142c",                      // base
-  on_error_container: "#f38ba8",            // red
-  on_primary: "#15142c",                    // base
-  on_primary_container: "#d9bcbc",          // pale pink
-  on_primary_fixed: "#15142c",              // base
-  on_primary_fixed_variant: "#d9bcbc",      // pink
-  on_secondary: "#15142c",                  // base
-  on_secondary_container: "#7b758c",        // muted lavender
-  on_secondary_fixed: "#15142c",            // base
-  on_secondary_fixed_variant: "#7b758c",    // muted lavender
-  on_surface: "#998da2",                    // text
-  on_surface_variant: "#615b74",            // muted
-  on_tertiary: "#15142c",                   // base
-  on_tertiary_container: "#c0a6c4",         // dusty lavender
-  on_tertiary_fixed: "#15142c",             // base
-  on_tertiary_fixed_variant: "#c0a6c4",     // dusty lavender
-  outline: "#3f3c5b",                       // border
-  outline_variant: "#332d4d",               // darker border
-  primary: "#d9bcbc",                       // rose-pink (primary)
-  primary_container: "#3f3c5b",             // muted purple
-  primary_fixed: "#d9bcbc",                 // same as primary
-  primary_fixed_dim: "#c0a6c4",             // dimmed pink
+  background: "#1b1726",                    // base background (deep violet)
+  error: "#d86c88",                         // muted rose red
+  error_container: "#502c39",               // deep rose
+  inverse_on_surface: "#1b1726",            // base
+  inverse_primary: "#dba0ae",               // softer rose highlight
+  inverse_surface: "#dcd4e6",               // light text
+  on_background: "#dcd4e6",                 // light text
+  on_error: "#1b1726",                      // base
+  on_error_container: "#d86c88",            // muted rose
+  on_primary: "#1b1726",                    // base
+  on_primary_container: "#dba0ae",          // pale muted rose
+  on_primary_fixed: "#1b1726",              // base
+  on_primary_fixed_variant: "#dba0ae",      // pale muted rose
+  on_secondary: "#1b1726",                  // base
+  on_secondary_container: "#9ccfd8",        // aqua
+  on_secondary_fixed: "#1b1726",            // base
+  on_secondary_fixed_variant: "#9ccfd8",    // aqua
+  on_surface: "#dcd4e6",                    // text
+  on_surface_variant: "#a59cb5",            // soft gray
+  on_tertiary: "#1b1726",                   // base
+  on_tertiary_container: "#c4a7e7",         // lavender
+  on_tertiary_fixed: "#1b1726",             // base
+  on_tertiary_fixed_variant: "#c4a7e7",     // lavender
+  outline: "#6e6a86",                       // mid border
+  outline_variant: "#4f4b64",               // dark border
+  primary: "#dba0ae",                       // softened rose
+  primary_container: "#5a2d3b",             // muted crimson
+  primary_fixed: "#dba0ae",                 // soft red-pink
+  primary_fixed_dim: "#bb7e90",             // dim rose
   scrim: "#000000",
-  secondary: "#7b758c",                     // lavender
-  secondary_container: "#332d4d",           // dark lavender
-  secondary_fixed: "#7b758c",
-  secondary_fixed_dim: "#615b74",
+  secondary: "#9ccfd8",                     // blue
+  secondary_container: "#34555f",           // dark teal
+  secondary_fixed: "#9ccfd8",
+  secondary_fixed_dim: "#7db6c1",
   shadow: "#000000",
-  source_color: "#d9bcbc",                  // rose-pink
-  surface: "#15142c",                       // very dark base
-  surface_bright: "#241d3d",                // extracted deep indigo
-  surface_container: "#1a1a29",
-  surface_container_high: "#2a2a3c",
-  surface_container_highest: "#332d4d",
-  surface_container_low: "#11111b",
-  surface_container_lowest: "#0b0b13",
-  surface_dim: "#15142c",
-  surface_tint: "#d9bcbc",
-  surface_variant: "#3f3c5b",
-  tertiary: "#c0a6c4",                      // lavender rose
-  tertiary_container: "#332d4d",            // dark violet
-  tertiary_fixed: "#c0a6c4",
-  tertiary_fixed_dim: "#998da2"
+  source_color: "#dba0ae",                  // soft pink
+  surface: "#1b1726",                       // base
+  surface_bright: "#2b243b",                // brighter base
+  surface_container: "#221c30",
+  surface_container_high: "#2f2942",
+  surface_container_highest: "#3c3554",
+  surface_container_low: "#15111f",
+  surface_container_lowest: "#0e0a15",
+  surface_dim: "#1b1726",
+  surface_tint: "#dba0ae",
+  surface_variant: "#3c3554",
+  tertiary: "#c4a7e7",                      // lavender
+  tertiary_container: "#4a3a5f",            // dark violet
+  tertiary_fixed: "#c4a7e7",
+  tertiary_fixed_dim: "#a78dcf"
 };
-
-
-
 

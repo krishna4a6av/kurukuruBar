@@ -155,9 +155,6 @@ Rectangle {
         }
       }
 
-      // network tab incomplete
-      // waiting for foxxed to impl the network stuff in quickshell
-      // too lazy to write a script on my own
       // I wrote it :))
       Wid.NetworkTab {
         Layout.fillHeight: true

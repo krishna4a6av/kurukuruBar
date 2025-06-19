@@ -130,7 +130,7 @@ Rectangle {
       Layout.fillWidth: true
       clip: true
       color: Dat.Colors.surface_container_high
-      radius: 10
+      radius: 20
       
       ColumnLayout {
         id: rightArea
@@ -146,7 +146,7 @@ Rectangle {
           Layout.fillHeight: true
           Layout.fillWidth: true
           color: Dat.Colors.surface_container
-          radius: 10
+          radius: 20
           
           RowLayout {
             anchors.fill: parent
@@ -158,11 +158,11 @@ Rectangle {
               
               model: [
                 {
-                  icon: "",
+                  icon: "",
                   label: "Download"
                 },
                 {
-                  icon: "",
+                  icon: "",
                   label: "Upload"
                 }
               ]
@@ -181,36 +181,39 @@ Rectangle {
                 
                 Gen.CircularProgress {
                   anchors.centerIn: parent
-                  size: Math.max(80, Math.min(parent.width, parent.height))
+                  size: Math.max(80, Math.min(parent.width, parent.height + 10))
                   value: formatProgress(itemRoot.speedValue) / 100
                   primaryColor: itemRoot.circleColor
                   secondaryColor: Dat.Colors.primary_container
                   lineWidth: 7
+                  rotation: -205
+                  degreeLimit: 290
+                }
 
                   Text {
                     anchors.centerIn: parent
                     text: itemRoot.speed
                     color: Dat.Colors.primary
-                    font.pointSize: 12 * Dat.Globals.notchScale
+                    font.bold: true
+                    font.pointSize: 13 * Dat.Globals.notchScale
                   }
 
                   Rectangle {
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: this.anchors.rightMargin
                     anchors.right: parent.right
-                    anchors.rightMargin: 5
+                    anchors.rightMargin: 9
                     color: Dat.Colors.primary
                     height: this.width
                     radius: this.width
-                    width: 30
+                    width: 35
 
                     Text {
                       anchors.centerIn: parent
                       color: Dat.Colors.on_primary
-                      font.pointSize: 16
+                      font.pointSize: 15
                       text: itemRoot.modelData.icon
                     }
-                  }
                 }
               }
             }
@@ -221,7 +224,7 @@ Rectangle {
         Rectangle {
           Layout.alignment: Qt.AlignCenter
           Layout.fillWidth: true
-          Layout.preferredHeight: 23
+          Layout.preferredHeight: 21
           color: "transparent"
           
           ColumnLayout {
@@ -239,7 +242,7 @@ Rectangle {
             
             Text {
               text: root.connectionType + (root.isConnected ? " • Connected" : " • Disconnected")
-              color: root.isConnected ? Dat.Colors.on_surface_variant : Dat.Colors.error
+              color: root.isConnected ? Dat.Colors.on_surface : Dat.Colors.error
               font.pointSize: 7 * Dat.Globals.notchScale
               Layout.alignment: Qt.AlignHCenter
               horizontalAlignment: Text.AlignHCenter
