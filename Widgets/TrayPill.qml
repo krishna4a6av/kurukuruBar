@@ -19,15 +19,6 @@ Rectangle {
   implicitWidth: isExpanded ? systemTrayLoader.width : collapsedButton.width
   implicitHeight: 22
   
-  // Auto-collapse when notch state changes away from FULLY_EXPANDED
-  //onIsAutoExpandedChanged: {
-  //  if (!isAutoExpanded) {
-  //    isManuallyExpanded = false
-  //  }
-  //}
-  
-  
-  // Collapsed state - just a button
   Rectangle {
     id: collapsedButton
     anchors.left: parent.left
@@ -92,11 +83,10 @@ Rectangle {
     }
   }
   
-  // Optional: Add a close button or click-outside-to-close behavior
   MouseArea {
     anchors.fill: parent
     visible: trayPill.isExpanded
-    z: -1 // Behind the tray content
+    z: -1 
     
     onClicked: {
       // Close when clicking outside tray items

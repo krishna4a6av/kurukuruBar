@@ -94,9 +94,13 @@ Rectangle {
                   trayPopup.close();
                   systemTray.currentTrayIndex = -1;
                 } else {
-                  menuStackView.replace(newMenu);
+                  // Replace the current menu or push if stack is empty
+                  if (menuStackView.depth > 0) {
+                    menuStackView.replace(newMenu);
+                  } else {
+                    menuStackView.push(newMenu);
+                  }
                   trayPopup.open();
-                  menuStackView.replace(newMenu, StackView.ReplaceTransition);
                   systemTray.currentTrayIndex = trayItemRoot.index;
                 }
               }
