@@ -8,7 +8,6 @@ import "../Data/" as Dat
 
 ColumnLayout {
   id: root
-  spacing: 0
   Layout.fillWidth: true
   Layout.fillHeight: true
 
@@ -27,7 +26,7 @@ ColumnLayout {
     AnimatedImage {
       id: faceIcon
       anchors.centerIn: parent
-      width: 90
+      width: 90*Dat.Globals.notchScale
       height: width
       mipmap: true
       source: "../Assets/herta/Hattug.jpg" //add the new image to assets and change name to the image
@@ -55,7 +54,7 @@ ColumnLayout {
       Rectangle {
         height: width
         width: faceIcon.width
-        radius: 20
+        radius: 20*Dat.Globals.notchScale
       }
     }
   }
@@ -68,14 +67,14 @@ ColumnLayout {
   Rectangle {
     id: informationRect
     Layout.fillWidth: true
-    Layout.preferredHeight: 60
+    Layout.preferredHeight: 60*Dat.Globals.notchScale
     color: Dat.Colors.surface_container
     radius: 20
 
     Text {
       anchors.centerIn: parent
       color: Dat.Colors.on_surface
-      font.pointSize: 14
+      font.pointSize: 14*Dat.Globals.notchScale
       text: "Hello there!"
     }
   }

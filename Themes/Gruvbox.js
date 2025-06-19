@@ -26,7 +26,7 @@ const theme = {
   outline_variant: "#665c54", // gray darker
   primary: "#d79921", // yellow
   primary_container: "#3c3836", // bg1
-  primary_fixed: "#fabd2f", // yellow bright
+  primary_fixed: "#d79921", // yellow bright
   primary_fixed_dim: "#b57614", // orange
   scrim: "#000000",
   secondary: "#458588", // blue

@@ -15,7 +15,7 @@ Rectangle {
   RowLayout {
     anchors.fill: parent
     layoutDirection: Qt.RightToLeft
-    spacing: 8
+    spacing: 8 * Dat.Globals.notchScale
 
     Rectangle {
       id: swipeRect
@@ -84,21 +84,21 @@ Rectangle {
 
     Rectangle {
       // the page indicator
-      Layout.leftMargin: 8
+      Layout.leftMargin: 8 * Dat.Globals.notchScale
       color: Dat.Colors.surface_container_low
-      implicitHeight: tabCols.height + 20
-      implicitWidth: 38
-      radius: 20
+      implicitHeight: (tabCols.height + 20) * Dat.Globals.notchScale
+      implicitWidth: 38 * Dat.Globals.notchScale
+      radius: 20 * Dat.Globals.notchScale
 
       ColumnLayout {
         id: tabCols
 
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 10
+        spacing: 10 * Dat.Globals.notchScale
         width: parent.width
 
         Repeater {
-          model: ["󰋜", "󰃭", "󰣇", "󰎇", "󰒓"]//󱄅,
+          model: ["󰋜", "󰃭", "󰣇", "󰎇", "󰒓"]//󱄅,
 
           Rectangle {
             id: tabDot
@@ -109,15 +109,15 @@ Rectangle {
             Layout.alignment: Qt.AlignCenter
             color: "transparent"
             implicitHeight: this.implicitWidth
-            implicitWidth: 20
-            radius: 20
+            implicitWidth: 20 * Dat.Globals.notchScale
+            radius: 20 * Dat.Globals.notchScale
 
             Text {
               id: dotText
 
               anchors.centerIn: parent
               color: Dat.Colors.on_surface
-              font.pointSize: 11
+              font.pointSize: 11 * Dat.Globals.notchScale
               state: (swipeArea.currentIndex == tabDot.index) ? "ACTIVE" : "INACTIVE"
               text: tabDot.modelData
 

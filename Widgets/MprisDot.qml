@@ -13,7 +13,7 @@ Rectangle {
 
     anchors.centerIn: parent
     color: Dat.Colors.tertiary
-    font.pointSize: 11
+    font.pointSize: 11*Dat.Globals.notchScale
     rotation: Dat.Globals.mprisDotRotation
     text: "󰽰"
 

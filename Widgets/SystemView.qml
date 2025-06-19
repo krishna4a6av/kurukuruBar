@@ -19,16 +19,16 @@ Rectangle {
 
   RowLayout {
     anchors.fill: parent
-    anchors.margins: 10
-    anchors.rightMargin: 5
-    spacing: 5
+    anchors.margins: 10 * Dat.Globals.notchScale
+    anchors.rightMargin: 5 * Dat.Globals.notchScale
+    spacing: 5 * Dat.Globals.notchScale
 
     Rectangle {
       Layout.fillHeight: true
       Layout.fillWidth: true
       clip: true
       color: Dat.Colors.surface_container_high
-      radius: 10
+      radius: 10 * Dat.Globals.notchScale
 
       Image {
         id: smLogo
@@ -69,9 +69,9 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.left: smLogo.right
         // radius: 10
-        anchors.margins: 12
+        anchors.margins: 12 * Dat.Globals.notchScale
         anchors.right: parent.right
-        anchors.rightMargin: 13
+        anchors.rightMargin: 13 * Dat.Globals.notchScale
         anchors.top: parent.top
 
         Rectangle {
@@ -81,17 +81,17 @@ Rectangle {
           Layout.fillWidth: true
           clip: true
           color: Dat.Colors.surface_container
-          radius: 10
+          radius: 10 * Dat.Globals.notchScale
 
           RowLayout {
             anchors.fill: parent
-            anchors.margins: 10
+            anchors.margins: 10 * Dat.Globals.notchScale
 
             Item {
               Layout.bottomMargin: this.Layout.topMargin
               Layout.fillHeight: true
               Layout.fillWidth: true
-              Layout.topMargin: 20
+              Layout.topMargin: 20 * Dat.Globals.notchScale
 
               Text {
                 id: hyprIcon
@@ -100,7 +100,7 @@ Rectangle {
                 color: Dat.Colors.primary
                 font.pointSize: 32 * Dat.Globals.notchScale
                 horizontalAlignment: Text.AlignHCenter
-                text: ""
+                text: ""
                 verticalAlignment: Text.AlignVCenter
               }
             }
@@ -145,7 +145,7 @@ Rectangle {
           color: Dat.Colors.outline
           implicitHeight: 10 * Dat.Globals.notchScale
           implicitWidth: 80 * Dat.Globals.notchScale
-          radius: 10
+          radius: 10 * Dat.Globals.notchScale
         }
       }
     }

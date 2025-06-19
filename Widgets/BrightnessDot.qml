@@ -26,7 +26,7 @@ Rectangle {
   Text {
     anchors.centerIn: parent
     color: Dat.Colors.tertiary
-    font.pointSize: 12
+    font.pointSize: 12 * Dat.Globals.notchScale
     text: brightnessButton.getBrightnessIcon()
   }
   

@@ -14,7 +14,7 @@ Rectangle {
 
   clip: true
   color: Dat.Colors.surface_container_low
-  radius: 20
+  radius: 20 * Dat.Globals.notchScale
 
   Image {
     id: imgDisk
@@ -28,8 +28,8 @@ Rectangle {
     rotation: 0
     smooth: true
     source: player.trackArtUrl
-    width: rect.width - 60
-    y: 80
+    width: rect.width - (60 * Dat.Globals.notchScale)
+    y: 80 * Dat.Globals.notchScale
 
     layer.effect: MultiEffect {
       antialiasing: true
@@ -110,9 +110,9 @@ Rectangle {
 
   ColumnLayout {
     anchors.bottom: imgDisk.top
-    anchors.bottomMargin: 5
+    anchors.bottomMargin: 5 * Dat.Globals.notchScale
     anchors.left: parent.left
-    anchors.margins: 10
+    anchors.margins: 10 * Dat.Globals.notchScale
     anchors.right: parent.right
     anchors.top: parent.top
     anchors.topMargin: 0
@@ -129,7 +129,7 @@ Rectangle {
         color: Dat.Colors.primary
         elide: Text.ElideRight
         font.bold: true
-        font.pointSize: 13
+        font.pointSize: 13 * Dat.Globals.notchScale
         horizontalAlignment: Text.AlignHCenter
         text: player.trackTitle
         verticalAlignment: Text.AlignBottom
@@ -146,7 +146,7 @@ Rectangle {
         color: Dat.Colors.secondary
         elide: Text.ElideRight
         font.bold: true
-        font.pointSize: 9
+        font.pointSize: 9 * Dat.Globals.notchScale
         horizontalAlignment: Text.AlignHCenter
         text: player.trackArtist
         verticalAlignment: Text.AlignTop
@@ -156,11 +156,11 @@ Rectangle {
 
   Rectangle {
     anchors.left: rect.left
-    anchors.leftMargin: 20
+    anchors.leftMargin: 20 * Dat.Globals.notchScale
     anchors.verticalCenter: rect.verticalCenter
     color: "transparent"
-    height: 25
-    width: 25
+    height: 25 * Dat.Globals.notchScale
+    width: 25 * Dat.Globals.notchScale
 
     Gen.MatIcon {
       id: prevIcon
@@ -168,8 +168,8 @@ Rectangle {
       anchors.centerIn: parent
       color: Dat.Colors.secondary
       font.bold: true
-      font.pixelSize: 30
-      icon: ""
+      font.pixelSize: 30 * Dat.Globals.notchScale
+      icon: "󰒮"
     }
 
     MouseArea {
@@ -186,11 +186,11 @@ Rectangle {
 
   Rectangle {
     anchors.right: rect.right
-    anchors.rightMargin: 20
+    anchors.rightMargin: 20 * Dat.Globals.notchScale
     anchors.verticalCenter: rect.verticalCenter
     color: "transparent"
-    height: 25
-    width: 25
+    height: 25 * Dat.Globals.notchScale
+    width: 25 * Dat.Globals.notchScale
 
     Gen.MatIcon {
       id: nextIcon
@@ -198,8 +198,8 @@ Rectangle {
       anchors.centerIn: parent
       color: Dat.Colors.secondary
       font.bold: true
-      font.pixelSize: 30
-      icon: ""
+      font.pixelSize: 30 * Dat.Globals.notchScale
+      icon: "󰒭"
     }
 
     MouseArea {

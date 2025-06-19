@@ -8,7 +8,7 @@ Rectangle {
 
   clip: true
   color: Dat.Colors.withAlpha(Dat.Colors.surface, 0.9)
-  radius: 20
+  radius: 20 * Dat.Globals.notchScale
 
   RowLayout {
     anchors.fill: parent

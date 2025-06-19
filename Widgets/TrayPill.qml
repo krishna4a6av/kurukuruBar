@@ -17,7 +17,7 @@ Rectangle {
   
   color: "transparent"
   implicitWidth: isExpanded ? systemTrayLoader.width : collapsedButton.width
-  implicitHeight: 22
+  implicitHeight: 22 * Dat.Globals.notchScale
   
   Rectangle {
     id: collapsedButton
@@ -27,15 +27,15 @@ Rectangle {
     visible: !trayPill.isExpanded
     
     color: Dat.Colors.primary
-    radius: 12
-    width: 40
-    height: 23
+    radius: 12 * Dat.Globals.notchScale
+    width: 40 * Dat.Globals.notchScale
+    height: 21 * Dat.Globals.notchScale
     
     Text {
       id: iconText
       anchors.centerIn: parent
       text: ""
-      font.pixelSize: 14
+      font.pixelSize: 14 * Dat.Globals.notchScale
       color: Dat.Colors.on_primary
     }
     

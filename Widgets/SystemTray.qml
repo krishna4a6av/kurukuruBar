@@ -16,20 +16,20 @@ Rectangle {
   property int currentTrayIndex: -1  // Track the currently open tray item index
 
   color: "transparent"
-  implicitWidth: trayLayout.implicitWidth+10
-  implicitHeight: 23
+  implicitWidth: (trayLayout.implicitWidth + 10) * Dat.Globals.notchScale
+  implicitHeight: 23 * Dat.Globals.notchScale
 
   Rectangle{
     anchors.fill: parent
     color: Dat.Colors.primary
-    radius: 12
+    radius: 12 * Dat.Globals.notchScale
 
   }
 
   RowLayout {
     id: trayLayout
     anchors.fill: parent
-    spacing: 4
+    spacing: 4 * Dat.Globals.notchScale
     // System tray items
 
     Repeater {
@@ -68,7 +68,7 @@ Rectangle {
               }
               return trayItemRoot.modelData.icon;
             }
-            width: 22
+            width: 22 * Dat.Globals.notchScale
                     
             MouseArea {
               acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -84,8 +84,8 @@ Rectangle {
                     return;
 
                 const globalPos = trayItemRoot.mapToItem(systemTray, 0, trayItemRoot.height);
-                trayPopup.x = globalPos.x - 140;
-                trayPopup.y = globalPos.y + 5;
+                trayPopup.x = globalPos.x - (140 * Dat.Globals.notchScale);
+                trayPopup.y = globalPos.y + (5 * Dat.Globals.notchScale);
 
                 const newMenu = trayItemRoot.menu;
 
@@ -122,21 +122,21 @@ Rectangle {
     focus: true
     visible: false
     z: 999
-    width: 200
-    height: 200
+    width: 200 * Dat.Globals.notchScale
+    height: 200 * Dat.Globals.notchScale
 
     x: (systemTray.width - width) / 2
     y: systemTray.height
 
     background: Rectangle {
       color: Dat.Colors.surface_container
-      radius: 12
+      radius: 12 * Dat.Globals.notchScale
 
       Rectangle {
-        anchors.margins: -2
+        anchors.margins: -2 * Dat.Globals.notchScale
         color: "transparent"
-        border.width: 1
-        radius: parent.radius + 1
+        border.width: 1 * Dat.Globals.notchScale
+        radius: (parent.radius + 1) * Dat.Globals.notchScale
         z: -1
       }
     }

@@ -16,17 +16,23 @@ Rectangle {
   
   RowLayout {
     anchors.fill: parent
-    anchors.margins: 10
-    spacing: 10
+    anchors.margins: 10 * Dat.Globals.notchScale
+    spacing: 12 * Dat.Globals.notchScale
     
     // Left side - Greeting and mssg | op's greeting widget
     Rectangle {
       Layout.fillHeight: true
       Layout.fillWidth: !themeSelectorExpanded
-      Layout.preferredWidth: themeSelectorExpanded ? 60 : 100
-      Layout.minimumWidth: themeSelectorExpanded ? 60 : 100
-      color: Dat.Colors.surface_container
-      radius: 20
+      Layout.rightMargin: 10*Dat.Globals.notchScale
+      Layout.preferredWidth: themeSelectorExpanded ? 80 * Dat.Globals.notchScale : 100 * Dat.Globals.notchScale
+      Layout.minimumWidth: themeSelectorExpanded ? 60 * Dat.Globals.notchScale : 100 * Dat.Globals.notchScale
+      color: "transparent"
+
+      Rectangle{
+        anchors.fill: parent
+        color: themeSelectorExpanded ? "transparent" : Dat.Colors.surface_container
+        radius: 20 * Dat.Globals.notchScale
+      }
       
       Behavior on Layout.preferredWidth {
         NumberAnimation {
@@ -65,7 +71,7 @@ Rectangle {
             NumberAnimation {
               duration: Dat.MaterialEasing.emphasizedDecelTime
               easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
-              from: -100
+              from: -100 * Dat.Globals.notchScale
               property: "y"
             }
           }
@@ -84,7 +90,7 @@ Rectangle {
               duration: Dat.MaterialEasing.emphasizedAccelTime
               easing.bezierCurve: Dat.MaterialEasing.emphasizedAccel
               property: "y"
-              to: 100
+              to: 100 * Dat.Globals.notchScale
             }
           }
         }
@@ -101,7 +107,7 @@ Rectangle {
             NumberAnimation {
               duration: Dat.MaterialEasing.emphasizedDecelTime
               easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
-              from: 100
+              from: 100 * Dat.Globals.notchScale
               property: "y"
             }
           }
@@ -121,7 +127,7 @@ Rectangle {
             duration: Dat.MaterialEasing.emphasizedAccelTime
             easing.bezierCurve: Dat.MaterialEasing.emphasizedAccel
             property: "y"
-            to: -100
+            to: -100 * Dat.Globals.notchScale
           }
         }
         
@@ -135,7 +141,7 @@ Rectangle {
             NumberAnimation {
               duration: Dat.MaterialEasing.emphasizedDecelTime
               easing.bezierCurve: Dat.MaterialEasing.emphasizedDecel
-              from: 100
+              from: 100 * Dat.Globals.notchScale
               property: "y"
             }
           }
@@ -152,9 +158,10 @@ Rectangle {
         }
       }
       
-      // Current theme display when collapsed
+      // Current theme display when greeter is collapsed
       Rectangle {
         anchors.fill: parent
+        anchors.leftMargin: 20
         visible: themeSelectorExpanded
         opacity: themeSelectorExpanded ? 1 : 0
         color: "transparent"
@@ -162,7 +169,7 @@ Rectangle {
         Rectangle {
           anchors.fill: parent
           color: Dat.Colors.primary
-          radius: 20
+          radius: 20 * Dat.Globals.notchScale
         }
         
         Behavior on opacity {
@@ -174,14 +181,14 @@ Rectangle {
         
         ColumnLayout {
           anchors.centerIn: parent
-          spacing: 8
+          spacing: 8 * Dat.Globals.notchScale
           
           // Current theme name (vertical)
           Text {
             Layout.alignment: Qt.AlignHCenter
             text: Dat.ThemeManager.getThemeName()
 
-            font.pixelSize: 14
+            font.pixelSize: 14 * Dat.Globals.notchScale
             font.weight: Font.Bold
             rotation: -90
             color: Dat.Colors.on_primary
@@ -197,11 +204,11 @@ Rectangle {
     // Right side - Collapsible Theme Selector
     Rectangle {
       Layout.fillHeight: true
-      Layout.preferredWidth: themeSelectorExpanded ? 210 : 50
-      Layout.minimumWidth: themeSelectorExpanded ? 180 : 50
-      Layout.maximumWidth: themeSelectorExpanded ? 250 : 50
+      Layout.preferredWidth: themeSelectorExpanded ? 210 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
+      Layout.minimumWidth: themeSelectorExpanded ? 180 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
+      Layout.maximumWidth: themeSelectorExpanded ? 250 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
       color: Dat.Colors.surface_container
-      radius: 20
+      radius: 20 * Dat.Globals.notchScale
       
       Behavior on Layout.preferredWidth {
         NumberAnimation {
@@ -228,7 +235,7 @@ Rectangle {
           Rectangle {
             anchors.fill: parent
             color: parent.containsMouse ? Dat.Colors.secondary_container : Dat.Colors.primary
-            radius: 20
+            radius: 20 * Dat.Globals.notchScale
             
             Behavior on color {
               ColorAnimation {
@@ -242,19 +249,19 @@ Rectangle {
         Text {
           anchors.centerIn: parent
           text: "T\nH\nE\nM\nE\nS"
-          font.pixelSize: 12
-          font.weight: Font.Bold
+          font.pixelSize: 13 * Dat.Globals.notchScale
+          font.bold: true
           color: Dat.Colors.on_primary
           horizontalAlignment: Text.AlignHCenter
-          lineHeight: 1.2
+          lineHeight: 1
         }
       }
       
       // Expanded state - Full theme selector
       RowLayout {
         anchors.fill: parent
-        anchors.margins: 12
-        spacing: 5
+        anchors.margins: 13 * Dat.Globals.notchScale
+        spacing: 8 * Dat.Globals.notchScale
         visible: themeSelectorExpanded
 
         //Theme selection scroll
@@ -267,7 +274,7 @@ Rectangle {
           
           ColumnLayout {
             width: parent.width
-            spacing: 10
+            spacing: 8 * Dat.Globals.notchScale
             
             Repeater {
               model: Dat.ThemeManager.themes
@@ -276,7 +283,7 @@ Rectangle {
                 required property var modelData
                 
                 Layout.fillWidth: true
-                Layout.preferredHeight: 45
+                Layout.preferredHeight: 45 * Dat.Globals.notchScale
                 
                 color: mouseArea.containsMouse ? 
                        Dat.Colors.surface_container_high : 
@@ -284,8 +291,8 @@ Rectangle {
                         Dat.Colors.primary_container : 
                         Dat.Colors.surface_container_low)
                 
-                radius: 12
-                border.width: index === Dat.ThemeManager.currentThemeIndex ? 3 : 1
+                radius: 12 * Dat.Globals.notchScale
+                border.width: (index === Dat.ThemeManager.currentThemeIndex ? 3 : 1) * Dat.Globals.notchScale
                 border.color: index === Dat.ThemeManager.currentThemeIndex ? 
                              Dat.Colors.primary : 
                              Dat.Colors.outline_variant
@@ -306,23 +313,23 @@ Rectangle {
 
                 RowLayout {
                   anchors.fill: parent
-                  anchors.margins: 10
-                  spacing: 10
+                  anchors.margins: 9 * Dat.Globals.notchScale
+                  spacing: 10 * Dat.Globals.notchScale
 
                   //Left dot on the themes list
                   Rectangle {
-                    Layout.preferredWidth: 15
-                    Layout.preferredHeight: 15
-                    radius: 8
+                    Layout.preferredWidth: 14 * Dat.Globals.notchScale
+                    Layout.preferredHeight: 14 * Dat.Globals.notchScale
+                    radius: 8 * Dat.Globals.notchScale
                     color: index === Dat.ThemeManager.currentThemeIndex ? 
                            Dat.Colors.primary : 
                            Dat.Colors.outline_variant
                     
                     Rectangle {
                       anchors.centerIn: parent
-                      width: 9
-                      height: 9
-                      radius: 6
+                      width: 9 * Dat.Globals.notchScale
+                      height: 9 * Dat.Globals.notchScale
+                      radius: 6 * Dat.Globals.notchScale
                       color: Dat.Colors.on_primary
                       visible: index === Dat.ThemeManager.currentThemeIndex
                     }
@@ -332,7 +339,7 @@ Rectangle {
                   Text {
                     Layout.fillWidth: true
                     text: modelData.name
-                    font.pixelSize: 14
+                    font.pixelSize: 14 * Dat.Globals.notchScale
                     font.weight: index === Dat.ThemeManager.currentThemeIndex ? 
                                 Font.DemiBold : Font.Normal
                     color: index === Dat.ThemeManager.currentThemeIndex ? 
@@ -343,10 +350,10 @@ Rectangle {
 
                   //Tick on right of active theme
                   Text {
-                    Layout.preferredWidth: 12
-                    Layout.preferredHeight: 12
+                    Layout.preferredWidth: 12 * Dat.Globals.notchScale
+                    Layout.preferredHeight: 12 * Dat.Globals.notchScale
                     text: "✓"
-                    font.pixelSize: 10
+                    font.pixelSize: 12 * Dat.Globals.notchScale
                     font.weight: Font.Bold
                     color: Dat.Colors.primary
                     horizontalAlignment: Text.AlignHCenter
@@ -379,16 +386,16 @@ Rectangle {
         // Close button positioned at far-right
         Item {
           Layout.fillWidth: true
-          Layout.preferredHeight: 40
+          Layout.preferredHeight: 40 * Dat.Globals.notchScale
             
           Rectangle {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.topMargin: 0
             anchors.leftMargin: 0
-            width: 24
-            height: 24
-            radius: 12
+            width: 24 * Dat.Globals.notchScale
+            height: 24 * Dat.Globals.notchScale
+            radius: 12 * Dat.Globals.notchScale
             color: closeMouseArea.containsMouse ? Dat.Colors.surface_container_high : "transparent"
               
             Behavior on color {
@@ -401,7 +408,7 @@ Rectangle {
             Text {
               anchors.centerIn: parent
               text: ""
-              font.pixelSize: 16
+              font.pixelSize: 16 * Dat.Globals.notchScale
               font.weight: Font.Bold
               color: Dat.Colors.on_surface
             }
