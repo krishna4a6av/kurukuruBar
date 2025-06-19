@@ -141,7 +141,7 @@ Rectangle {
         anchors.top: parent.top
         spacing: 7
         
-        // Side-by-side Circular Progress using Repeater
+        // Side-by-side Circular Progress
         Rectangle {
           Layout.fillHeight: true
           Layout.fillWidth: true
@@ -184,14 +184,14 @@ Rectangle {
                   size: Math.max(80, Math.min(parent.width, parent.height))
                   value: formatProgress(itemRoot.speedValue) / 100
                   primaryColor: itemRoot.circleColor
-                  secondaryColor: "transparent"
+                  secondaryColor: Dat.Colors.primary_container
                   lineWidth: 7
 
                   Text {
                     anchors.centerIn: parent
                     text: itemRoot.speed
                     color: Dat.Colors.primary
-                    font.pointSize: 9 * Dat.Globals.notchScale
+                    font.pointSize: 12 * Dat.Globals.notchScale
                   }
 
                   Rectangle {
