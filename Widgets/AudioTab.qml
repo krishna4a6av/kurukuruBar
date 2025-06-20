@@ -12,8 +12,8 @@ Rectangle {
 
   ListView {
     anchors.fill: parent
-    anchors.margins: 10
-    spacing: 12
+    anchors.margins: 16 * Dat.Globals.notchScale
+    spacing: 12 * Dat.Globals.notchScale
 
     delegate: Gen.AudioSlider {
       required property PwNode modelData

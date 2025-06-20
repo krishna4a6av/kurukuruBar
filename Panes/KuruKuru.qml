@@ -11,6 +11,7 @@ Rectangle {
 
   RowLayout {
     anchors.fill: parent
+    spacing: 10 * Dat.Globals.notchScale
 
     Rectangle {
       Layout.fillHeight: true
@@ -20,7 +21,7 @@ Rectangle {
 
       RowLayout {
         anchors.fill: parent
-        spacing: 10
+        spacing: 10 * Dat.Globals.notchScale
 
         Text {
           id: muteIcon
@@ -29,8 +30,9 @@ Rectangle {
 
           Layout.fillHeight: true
           Layout.fillWidth: true
-          Layout.leftMargin: 10
+          Layout.leftMargin: 10 * Dat.Globals.notchScale
           color: Dat.Colors.on_surface
+          font.pixelSize: 16 * Dat.Globals.notchScale
           horizontalAlignment: Text.AlignRight
           text: (muted) ? "󰖁" : "󰕾"
           verticalAlignment: Text.AlignVCenter
@@ -48,6 +50,7 @@ Rectangle {
           Layout.fillHeight: true
           Layout.fillWidth: true
           color: Dat.Colors.on_surface
+          font.pixelSize: 16 * Dat.Globals.notchScale
           horizontalAlignment: Text.AlignLeft
           text: "くるくる～――っと。"
           verticalAlignment: Text.AlignVCenter
@@ -56,11 +59,11 @@ Rectangle {
 
       Wid.NotifDots {
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 10 * Dat.Globals.notchScale
         anchors.horizontalCenter: parent.horizontalCenter
         color: "transparent" //Dat.Colors.surface_container
-        height: 28
-        radius: 20
+        height: 28 * Dat.Globals.notchScale
+        radius: 20 * Dat.Globals.notchScale
       }
     }
 
@@ -89,7 +92,7 @@ Rectangle {
             name: "SQUISH"
 
             PropertyChanges {
-              squishRect.implicitHeight: 40
+              squishRect.implicitHeight: 40 * Dat.Globals.notchScale
             }
           }
         ]
@@ -260,7 +263,7 @@ Rectangle {
           id: smoll
 
           anchors.fill: parent
-          anchors.rightMargin: 8
+          anchors.rightMargin: 8 * Dat.Globals.notchScale
           fillMode: Image.PreserveAspectCrop
           horizontalAlignment: Image.AlignRight
           playing: parent.playing && smoll.visible
@@ -271,7 +274,7 @@ Rectangle {
         AnimatedImage {
           id: big
 
-          anchors.bottomMargin: -13
+          anchors.bottomMargin: -13 * Dat.Globals.notchScale
           anchors.fill: parent
           fillMode: Image.PreserveAspectFit
           horizontalAlignment: Image.AlignRight
@@ -312,7 +315,7 @@ Rectangle {
     layer.enabled: true
     rateMultiplier: gifRect.speed
     visible: false
-    width: 700
+    width: 700 * Dat.Globals.notchScale
   }
 
   MultiEffect {
@@ -335,8 +338,8 @@ Rectangle {
 
     Rectangle {
       anchors.fill: parent
-      bottomLeftRadius: 20
-      bottomRightRadius: 20
+      bottomLeftRadius: 20 * Dat.Globals.notchScale
+      bottomRightRadius: 20 * Dat.Globals.notchScale
     }
   }
 }

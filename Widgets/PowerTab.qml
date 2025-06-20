@@ -10,7 +10,7 @@ import "../Widgets/" as Wid
 
 Rectangle {
   color: Dat.Colors.surface_container_high
-  radius: 20
+  radius: 20 * Dat.Globals.notchScale
 
   RowLayout {
     anchors.fill: parent
@@ -20,12 +20,12 @@ Rectangle {
       Layout.fillHeight: true
       Layout.fillWidth: true
       color: "transparent"
-      radius: 20
+      radius: 20 * Dat.Globals.notchScale
 
       Rectangle {
         anchors.fill: infoCol
         color: Dat.Colors.surface_container
-        radius: 10
+        radius: 10 * Dat.Globals.notchScale
       }
 
       ColumnLayout {
@@ -42,7 +42,7 @@ Rectangle {
 
           RowLayout {
             anchors.fill: parent
-            anchors.margins: 3
+            anchors.margins: 3 * Dat.Globals.notchScale
             spacing: 0
 
             Repeater {
@@ -76,7 +76,7 @@ Rectangle {
                 Gen.CircularProgress {
                   anchors.centerIn: parent
                   degreeLimit: 290
-                  lineWidth: 7
+                  lineWidth: 7 * Dat.Globals.notchScale
                   rotation: -189
                   size: parent.width
                   value: itemRoot.usage
@@ -85,7 +85,7 @@ Rectangle {
                 Text {
                   anchors.centerIn: parent
                   color: Dat.Colors.primary
-                  font.pointSize: 24
+                  font.pointSize: 24 * Dat.Globals.notchScale
                   text: (parent.usage * 100).toFixed(0)
                 }
 
@@ -93,16 +93,16 @@ Rectangle {
                   anchors.bottom: parent.bottom
                   anchors.bottomMargin: this.anchors.rightMargin
                   anchors.right: parent.right
-                  anchors.rightMargin: 5
+                  anchors.rightMargin: 5 * Dat.Globals.notchScale
                   color: Dat.Colors.primary
                   height: this.width
                   radius: this.width
-                  width: 35
+                  width: 35 * Dat.Globals.notchScale
 
                   Text {
                     anchors.centerIn: parent
                     color: Dat.Colors.on_primary
-                    font.pointSize: 16
+                    font.pointSize: 16 * Dat.Globals.notchScale
                     text: itemRoot.modelData.icon
                   }
                 }
@@ -115,16 +115,16 @@ Rectangle {
           // BATTERY information
           Layout.fillWidth: true
           color: Dat.Colors.surface_container_highest
-          implicitHeight: 28
-          radius: 20
+          implicitHeight: 28 * Dat.Globals.notchScale
+          radius: 20 * Dat.Globals.notchScale
           topLeftRadius: 0
           topRightRadius: 0
           visible: UPower.displayDevice.percentage > 0
 
           Wid.PowerInfo {
             anchors.fill: parent
-            anchors.leftMargin: 10
-            anchors.rightMargin: 10
+            anchors.leftMargin: 10 * Dat.Globals.notchScale
+            anchors.rightMargin: 10 * Dat.Globals.notchScale
           }
         }
       }
@@ -133,11 +133,11 @@ Rectangle {
     Rectangle {
       id: powerSliderRect
 
-      Layout.margins: 3
+      Layout.margins: 3 * Dat.Globals.notchScale
       color: "transparent"
-      implicitHeight: parent.height - 14
-      implicitWidth: 40
-      radius: 40
+      implicitHeight: parent.height - (14 * Dat.Globals.notchScale)
+      implicitWidth: 40 * Dat.Globals.notchScale
+      radius: 40 * Dat.Globals.notchScale
 
       // I should write my own generic slider
       Slider {
@@ -169,6 +169,7 @@ Rectangle {
               Text {
                 anchors.centerIn: parent
                 color: Dat.Colors.on_surface
+                font.pointSize: 12 * Dat.Globals.notchScale
                 text: parent.modelData
               }
             }
@@ -193,6 +194,7 @@ Rectangle {
           Text {
             anchors.centerIn: parent
             color: Dat.Colors.on_primary
+            font.pointSize: 12 * Dat.Globals.notchScale
             text: switch (PowerProfiles.profile) {
             case 0:
               "";

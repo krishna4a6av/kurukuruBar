@@ -74,7 +74,7 @@ RowLayout {
           Layout.rightMargin: 8 * Dat.Globals.notchScale
           color: Dat.Colors.primary
           font.pointSize: 10 * Dat.Globals.notchScale
-          text: (Dat.Globals.notchState == "FULLY_EXPANDED") ? "" : ""
+          text: (Dat.Globals.notchState == "FULLY_EXPANDED") ? "" : ""
           verticalAlignment: Text.AlignVCenter
           MouseArea {
             anchors.fill: parent

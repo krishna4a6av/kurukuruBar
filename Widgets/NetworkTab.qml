@@ -120,7 +120,7 @@ Rectangle {
 
   RowLayout {
     anchors.fill: parent
-    spacing: 0
+    spacing: 10 * Dat.Globals.notchScale
 
     Rectangle {
       Layout.fillHeight: true
@@ -138,7 +138,7 @@ Rectangle {
         Rectangle {
           Layout.fillHeight: true
           Layout.fillWidth: true
-          Layout.preferredHeight: 120 * Dat.Globals.notchScale
+          Layout.preferredHeight: 130 * Dat.Globals.notchScale
           Layout.maximumHeight: parent.height * 0.75
           radius: 20 * Dat.Globals.notchScale
           color: Dat.Colors.surface_container
@@ -149,8 +149,8 @@ Rectangle {
 
             Repeater {
               model: [
-                { icon: "", label: "Download" },
-                { icon: "", label: "Upload" }
+                { icon: "", label: "Download" },
+                { icon: "", label: "Upload" }
               ]
 
               delegate: Item {

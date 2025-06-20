@@ -11,14 +11,14 @@ Rectangle {
   ColumnLayout {
     anchors.fill: parent
     anchors.topMargin: this.spacing
-    spacing: 3
+    spacing: 3 * Dat.Globals.notchScale
 
     Rectangle {
       Layout.fillWidth: true
-      Layout.leftMargin: 20
-      Layout.rightMargin: 20
+      Layout.leftMargin: 20 * Dat.Globals.notchScale
+      Layout.rightMargin: 20 * Dat.Globals.notchScale
       color: "transparent"
-      implicitHeight: 18
+      implicitHeight: 18 * Dat.Globals.notchScale
 
       RowLayout {
         id: tabLay
@@ -88,8 +88,8 @@ Rectangle {
               anchors.centerIn: parent
               color: Dat.Colors.surface_container_high
               height: tabRect.height
-              radius: 10
-              width: tabText.contentWidth + 20
+              radius: 10 * Dat.Globals.notchScale
+              width: (tabText.contentWidth + 20) * Dat.Globals.notchScale
             }
 
             Text {
@@ -97,6 +97,7 @@ Rectangle {
 
               anchors.centerIn: parent
               color: Dat.Colors.on_surface
+              font.pixelSize: 12 * Dat.Globals.notchScale
               horizontalAlignment: Text.AlignHCenter
               text: parent.modelData
               verticalAlignment: Text.AlignVCenter

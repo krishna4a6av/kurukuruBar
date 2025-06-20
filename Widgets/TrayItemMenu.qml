@@ -15,12 +15,12 @@ Rectangle {
   
   clip: true
   color: Dat.Colors.surface_container
-  radius: 8
+  radius: 8 * Dat.Globals.notchScale
   
   ListView {
     id: view
     anchors.fill: parent
-    spacing: 3
+    spacing: 3 * Dat.Globals.notchScale
     delegate: Rectangle {
       id: entry
       property var child: QsMenuOpener {
@@ -28,8 +28,8 @@ Rectangle {
       }
       required property QsMenuEntry modelData
       color: (modelData?.isSeparator) ? Dat.Colors.outline : "transparent"
-      height: (modelData?.isSeparator) ? 2 : 28
-      radius: 20
+      height: (modelData?.isSeparator) ? 2 * Dat.Globals.notchScale : 28 * Dat.Globals.notchScale
+      radius: 20 * Dat.Globals.notchScale
       width: root.width
       
       Gen.MouseArea {
@@ -57,8 +57,8 @@ Rectangle {
       
       RowLayout {
         anchors.fill: parent
-        anchors.leftMargin: (entry.modelData?.buttonType == QsMenuButtonType.None) ? 10 : 2
-        anchors.rightMargin: 10
+        anchors.leftMargin: (entry.modelData?.buttonType == QsMenuButtonType.None) ? 10 * Dat.Globals.notchScale : 2 * Dat.Globals.notchScale
+        anchors.rightMargin: 10 * Dat.Globals.notchScale
         
         Item {
           Layout.fillHeight: true
@@ -68,7 +68,7 @@ Rectangle {
             anchors.centerIn: parent
             color: Dat.Colors.primary
             fill: (entry.modelData?.checkState == Qt.Checked) ?? false
-            font.pixelSize: parent.width * 0.8
+            font.pixelSize: (parent.width * 0.8) * Dat.Globals.notchScale
             icon: ((entry.modelData?.checkState != Qt.Checked) ?? true) ? "󰄮" : "󰄲"
           }
         }
@@ -84,7 +84,7 @@ Rectangle {
             anchors.centerIn: parent
             color: Dat.Colors.primary
             fill: (entry.modelData?.checkState == Qt.Checked) ?? false
-            font.pixelSize: parent.width * 0.8
+            font.pixelSize: (parent.width * 0.8) * Dat.Globals.notchScale
             icon: ((entry.modelData?.checkState != Qt.Checked) ?? true) ? "radio_button_unchecked" : "radio_button_checked"
           }
         }
@@ -97,7 +97,7 @@ Rectangle {
             id: text
             anchors.fill: parent
             color: (entry.modelData?.enabled ?? true) ? Dat.Colors.on_surface : Dat.Colors.primary
-            font.pointSize: 10
+            font.pointSize: 10 * Dat.Globals.notchScale
             text: entry.modelData?.text ?? ""
             verticalAlignment: Text.AlignVCenter
           }
@@ -109,7 +109,7 @@ Rectangle {
           visible: (entry.modelData?.icon ?? false) ? true : false
           Image {
             anchors.fill: parent
-            anchors.margins: 3
+            anchors.margins: 3 * Dat.Globals.notchScale
             fillMode: Image.PreserveAspectFit
             source: entry.modelData?.icon ?? ""
           }
@@ -122,7 +122,7 @@ Rectangle {
           Text {
             anchors.centerIn: parent
             color: Dat.Colors.on_surface
-            font.pointSize: 10
+            font.pointSize: 10 * Dat.Globals.notchScale
             text: "▶"
           }
         }

@@ -57,11 +57,11 @@ Rectangle {
 
         Rectangle {
           Layout.fillWidth: true
-          Layout.margins: 10
+          Layout.margins: 10 * Dat.Globals.notchScale
           color: "transparent"
           implicitHeight: sumText.contentHeight + bodText.contentHeight
-          topLeftRadius: 20
-          topRightRadius: 20
+          topLeftRadius: 20 * Dat.Globals.notchScale
+          topRightRadius: 20 * Dat.Globals.notchScale
 
           RowLayout {
             id: infoRow
@@ -76,15 +76,16 @@ Rectangle {
               Layout.maximumWidth: root.width * 0.8
               color: Dat.Colors.primary
               elide: Text.ElideRight
+              font.pixelSize: 14 * Dat.Globals.notchScale
               text: root.notif?.summary ?? "summary"
             }
 
             Rectangle {
               Layout.alignment: Qt.AlignRight
               color: "transparent"
-              implicitHeight: appText.contentHeight + 2
-              implicitWidth: appText.contentWidth + 10
-              radius: 20
+              implicitHeight: appText.contentHeight + 2 * Dat.Globals.notchScale
+              implicitWidth: appText.contentWidth + 10 * Dat.Globals.notchScale
+              radius: 20 * Dat.Globals.notchScale
 
               Text {
                 id: appText
@@ -92,7 +93,7 @@ Rectangle {
                 anchors.centerIn: parent
                 color: Dat.Colors.tertiary
                 font.bold: true
-                font.pointSize: 8
+                font.pointSize: 8 * Dat.Globals.notchScale
                 text: root.notif?.appName ?? "idk"
               }
             }
@@ -103,7 +104,7 @@ Rectangle {
 
             anchors.top: infoRow.bottom
             color: Dat.Colors.on_surface
-            font.pointSize: 11
+            font.pointSize: 11 * Dat.Globals.notchScale
             text: root.notif?.body ?? "very cool body that is missing"
             textFormat: Text.MarkdownText
             width: parent.width
@@ -121,15 +122,15 @@ Rectangle {
           id: flick
 
           Layout.alignment: Qt.AlignRight
-          Layout.bottomMargin: 10
+          Layout.bottomMargin: 10 * Dat.Globals.notchScale
           Layout.leftMargin: this.Layout.rightMargin
-          Layout.rightMargin: 10
+          Layout.rightMargin: 10 * Dat.Globals.notchScale
           boundsBehavior: Flickable.StopAtBounds
           clip: true
           contentWidth: actionRow.width
-          implicitHeight: 23
+          implicitHeight: 23 * Dat.Globals.notchScale
           // thanks to Aureus :>
-          implicitWidth: Math.min(bodyNActionCol.width - 20, actionRow.width)
+          implicitWidth: Math.min(bodyNActionCol.width - 20 * Dat.Globals.notchScale, actionRow.width)
           visible: root.notif?.actions.length != 0
 
           RowLayout {
@@ -146,15 +147,15 @@ Rectangle {
 
                 Layout.fillHeight: true
                 color: Dat.Colors.secondary
-                implicitWidth: actionText.contentWidth + 14
-                radius: 20
+                implicitWidth: actionText.contentWidth + 14 * Dat.Globals.notchScale
+                radius: 20 * Dat.Globals.notchScale
 
                 Text {
                   id: actionText
 
                   anchors.centerIn: parent
                   color: Dat.Colors.on_secondary
-                  font.pointSize: 11
+                  font.pointSize: 11 * Dat.Globals.notchScale
                   text: parent.modelData?.text ?? "activate"
                 }
 
