@@ -10,7 +10,7 @@ import "../Widgets/" as Wid
 
 Rectangle {
   id: root
-  color: "transparent"
+  color: Dat.Colors.surface_container_highest
   radius: 20 * Dat.Globals.notchScale
 
   property int index: SwipeView.index
@@ -127,7 +127,7 @@ Rectangle {
       Layout.fillWidth: true
       clip: true
       radius: 20 * Dat.Globals.notchScale
-      color: Dat.Colors.surface_container_high
+      color: "transparent"
 
       ColumnLayout {
         anchors.fill: parent
@@ -142,6 +142,8 @@ Rectangle {
           Layout.maximumHeight: parent.height * 0.75
           radius: 20 * Dat.Globals.notchScale
           color: Dat.Colors.surface_container
+          //bottomLeftRadius: 0
+          //bottomRightRadius: 0
 
           RowLayout {
             anchors.fill: parent
@@ -207,63 +209,67 @@ Rectangle {
           }
         }
 
-        // Connection Info - Reorganized like the battery reference
-        RowLayout {
+        Rectangle {
           id: connectionInfoLayout
           Layout.fillWidth: true
-          Layout.preferredHeight: Math.max(20 * Dat.Globals.notchScale, parent.height * 0.25)
-          spacing: 5 * Dat.Globals.notchScale
-
-          // Left: Connection name
-          Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            color: "transparent"
-            
-            Text {
-              anchors.fill: parent
-              anchors.margins: 2 * Dat.Globals.notchScale
-              text: "  " + root.currentConnection
-              color: Dat.Colors.on_surface
-              font.bold: true
-              font.pointSize: 9 * Dat.Globals.notchScale
-              horizontalAlignment: Text.AlignLeft
-              verticalAlignment: Text.AlignVCenter
+          color: "transparent"
+          implicitHeight: 28 * Dat.Globals.notchScale
+          radius: 20 * Dat.Globals.notchScale
+          topLeftRadius: 0
+          topRightRadius: 0
+        
+          RowLayout {
+            anchors.fill: parent
+            spacing: 5 * Dat.Globals.notchScale
+        
+            // Left: Connection name
+            Rectangle {
+              Layout.fillWidth: true
+              Layout.preferredWidth: 100
+              color: "transparent"
+        
+              Text {
+                anchors.fill: parent
+                anchors.margins: 2 * Dat.Globals.notchScale
+                text: " " + root.currentConnection
+                color: Dat.Colors.on_surface
+                font.bold: true
+                font.pointSize: 9 * Dat.Globals.notchScale
+                horizontalAlignment: Text.AlignLeft
+                verticalAlignment: Text.AlignVCenter
+              }
             }
-          }
-
-          // Center: Connection status with icon
-          Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.preferredWidth: 2 * Dat.Globals.notchScale
-            color: "transparent"
-            
-            Text {
-              anchors.centerIn: parent
-              anchors.margins: 2 * Dat.Globals.notchScale
-              text: getConnectionIcon(root.connectionType) + "   " + (root.isConnected ? "Connected" : "Disconnected")
-              color: root.isConnected ? Dat.Colors.on_surface : Dat.Colors.error
-              font.pointSize: 8 * Dat.Globals.notchScale
-              horizontalAlignment: Text.AlignHCenter
-              verticalAlignment: Text.AlignVCenter
+        
+            // Center: Connection status with icon
+            Rectangle {
+              Layout.preferredWidth: 150
+              color: "transparent"
+        
+              Text {
+                anchors.centerIn: parent
+                text: getConnectionIcon(root.connectionType) + "  " + (root.isConnected ? "Connected" : "Disconnected")
+                color: root.isConnected ? Dat.Colors.on_surface : Dat.Colors.error
+                font.pointSize: 8 * Dat.Globals.notchScale
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+              }
             }
-          }
-
-          // Right: Connection type
-          Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            color: "transparent"
-            
-            Text {
-              anchors.fill: parent
-              anchors.margins: 2 * Dat.Globals.notchScale
-              text: root.connectionType
-              color: Dat.Colors.on_surface
-              font.pointSize: 9 * Dat.Globals.notchScale
-              horizontalAlignment: Text.AlignRight
-              verticalAlignment: Text.AlignVCenter
+        
+            // Right: Connection type
+            Rectangle {
+              Layout.fillWidth: true
+              Layout.preferredWidth: 80
+              color: "transparent"
+        
+              Text {
+                anchors.fill: parent
+                anchors.margins: 2 * Dat.Globals.notchScale
+                text: root.connectionType + " "
+                color: Dat.Colors.on_surface
+                font.pointSize: 9 * Dat.Globals.notchScale
+                horizontalAlignment: Text.AlignRight
+                verticalAlignment: Text.AlignVCenter
+              }
             }
           }
         }

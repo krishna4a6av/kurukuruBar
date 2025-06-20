@@ -13,7 +13,7 @@ Singleton {
   property real mprisDotRotation: 0
   property bool notchHovered: false
 
-  // experimental, not reallllyyy recommended
+  // change by small scale at a time.
   property real notchScale: 0.85
 
   // one of "COLLAPSED", "EXPANDED", "FULLY_EXPANDED","REST"
