@@ -10,8 +10,9 @@ import "../Widgets/" as Wid
 Rectangle {
   id: trayPill
   
-
-  property bool isExpanded: false
+  property bool isAutoExpanded: Dat.Globals.notchState == "FULLY_EXPANDED"
+  property bool isManuallyExpanded: false
+  property bool isExpanded: isAutoExpanded || isManuallyExpanded
   property alias systemTray: systemTrayLoader.item
   
   color: "transparent"
@@ -45,9 +46,10 @@ Rectangle {
       onClicked: {
         // Toggle manual expansion when clicked
         if (!trayPill.isExpanded) {
-          trayPill.isExpanded = true
+          trayPill.isManuallyExpanded = true
         } else {
-          trayPill.isExpanded = false
+          trayPill.isManuallyExpanded = false
+          trayPill.isAutoExpanded = false
         }
       }
     }
@@ -56,7 +58,7 @@ Rectangle {
   // Expanded state - full system tray
   Loader {
     id: systemTrayLoader
-    //anchors.left: parent.left
+    anchors.left: parent.left
     anchors.verticalCenter: parent.verticalCenter
     
     active: trayPill.isExpanded
@@ -88,7 +90,7 @@ Rectangle {
     
     onClicked: {
       // Close when clicking outside tray items
-      trayPill.isExpanded = false
+      trayPill.isManuallyExpanded = false
     }
   }
 }

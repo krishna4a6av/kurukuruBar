@@ -18,6 +18,11 @@ RowLayout {
       Wid.WorkspacePill {
       }
 
+      Wid.AudioSwiper {
+        implicitHeight: 20 * Dat.Globals.notchScale
+        radius: 20 * Dat.Globals.notchScale
+      }
+
       Wid.MprisDot {
         implicitHeight: 20 * Dat.Globals.notchScale
         implicitWidth: 20 * Dat.Globals.notchScale
@@ -92,17 +97,17 @@ RowLayout {
           }
         }
       }
+      
+      Wid.TrayPill{
+        implicitHeight: 20 * Dat.Globals.notchScale
+        radius: 20 * Dat.Globals.notchScale
+      }
 
       Wid.BatteryPill {
         implicitHeight: 20 * Dat.Globals.notchScale
         radius: 20 * Dat.Globals.notchScale
       }
-
-      Wid.AudioSwiper {
-        implicitHeight: 20 * Dat.Globals.notchScale
-        radius: 20 * Dat.Globals.notchScale
-      }
-
+     
       Wid.BrightnessDot {
         implicitHeight: 20 * Dat.Globals.notchScale
         implicitWidth: 20 * Dat.Globals.notchScale
