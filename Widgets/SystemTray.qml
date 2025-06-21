@@ -16,8 +16,8 @@ Rectangle {
   property int currentTrayIndex: -1  // Track the currently open tray item index
 
   color: "transparent"
-  implicitWidth: (trayLayout.implicitWidth + 10) * Dat.Globals.notchScale
-  implicitHeight: 23 * Dat.Globals.notchScale
+  implicitWidth: (trayLayout.implicitWidth + 18) * Dat.Globals.notchScale
+  implicitHeight: 21 * Dat.Globals.notchScale
 
   Rectangle{
     anchors.fill: parent

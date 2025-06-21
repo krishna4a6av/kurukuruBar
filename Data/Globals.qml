@@ -14,7 +14,7 @@ Singleton {
   property bool notchHovered: false
 
   // change by small scale at a time.
-  property real notchScale: 0.85
+  property real notchScale: 0.93
 
   // one of "COLLAPSED", "EXPANDED", "FULLY_EXPANDED","REST"
   property string notchState: (reservedShell) ? "EXPANDED" : "REST"

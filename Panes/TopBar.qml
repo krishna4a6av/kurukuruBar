@@ -13,18 +13,17 @@ RowLayout {
       anchors.left: parent.left
       anchors.leftMargin: 8 * Dat.Globals.notchScale
       anchors.verticalCenter: parent.verticalCenter
-      spacing: defaultSpacing * Dat.Globals.notchScale
+      spacing: 6 * Dat.Globals.notchScale
+
       Wid.WorkspacePill {
       }
-      Wid.AudioSwiper {
-        implicitHeight: 20 * Dat.Globals.notchScale
-        radius: 20 * Dat.Globals.notchScale
-      }      
+
       Wid.MprisDot {
         implicitHeight: 20 * Dat.Globals.notchScale
         implicitWidth: 20 * Dat.Globals.notchScale
         radius: 20 * Dat.Globals.notchScale
       }
+
       Wid.RecordingDot {
         implicitHeight: 20 * Dat.Globals.notchScale
         implicitWidth: 20 * Dat.Globals.notchScale
@@ -37,6 +36,7 @@ RowLayout {
     Layout.fillHeight: true
     Layout.fillWidth: true
     color: "transparent"
+    
     Wid.TimePill {
     }
   }
@@ -45,6 +45,7 @@ RowLayout {
     Layout.fillHeight: true
     Layout.fillWidth: true
     color: "transparent"
+
     RowLayout {
       anchors.right: parent.right
       anchors.verticalCenter: parent.verticalCenter
@@ -54,11 +55,13 @@ RowLayout {
       ColumnLayout{
         Layout.fillHeight: true 
         spacing: 0
+
         Text {
           Layout.alignment: Qt.AlignTop
           color: Dat.Colors.primary
           font.pointSize: 11 * Dat.Globals.notchScale
           text: "-"
+
           MouseArea {
             anchors.fill: parent
             onClicked: mevent => {
@@ -76,6 +79,7 @@ RowLayout {
           font.pointSize: 10 * Dat.Globals.notchScale
           text: (Dat.Globals.notchState == "FULLY_EXPANDED") ? "" : ""
           verticalAlignment: Text.AlignVCenter
+
           MouseArea {
             anchors.fill: parent
             onClicked: mevent => {
@@ -88,16 +92,17 @@ RowLayout {
           }
         }
       }
-      
-      Wid.TrayPill{
-        implicitHeight: 20 * Dat.Globals.notchScale
-        radius: 20 * Dat.Globals.notchScale
-      }
+
       Wid.BatteryPill {
         implicitHeight: 20 * Dat.Globals.notchScale
         radius: 20 * Dat.Globals.notchScale
       }
-     
+
+      Wid.AudioSwiper {
+        implicitHeight: 20 * Dat.Globals.notchScale
+        radius: 20 * Dat.Globals.notchScale
+      }
+
       Wid.BrightnessDot {
         implicitHeight: 20 * Dat.Globals.notchScale
         implicitWidth: 20 * Dat.Globals.notchScale
