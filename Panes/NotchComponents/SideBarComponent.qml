@@ -1,4 +1,5 @@
 // Components/SideBarComponent.qml - collapsible sidebar with hover expand
+// just added the tray elements in this for now, we'll see how this goes.
 import QtQuick
 import "../../Data/" as Dat
 import "../../Panes/" as Panes

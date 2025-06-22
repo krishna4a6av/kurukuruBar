@@ -35,7 +35,7 @@ Rectangle {
       id: iconText
       anchors.centerIn: parent
       text: ""
-      font.pixelSize: 14 * Dat.Globals.notchScale
+      font.pixelSize: 13 * Dat.Globals.notchScale
       color: Dat.Colors.on_primary
     }
     

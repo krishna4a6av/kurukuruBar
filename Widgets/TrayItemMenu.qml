@@ -20,7 +20,7 @@ Rectangle {
   ListView {
     id: view
     anchors.fill: parent
-    spacing: 3 * Dat.Globals.notchScale
+    spacing: 1 * Dat.Globals.notchScale
     delegate: Rectangle {
       id: entry
       property var child: QsMenuOpener {

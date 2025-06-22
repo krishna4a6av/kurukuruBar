@@ -1,5 +1,4 @@
 
-// =============================================================================
 //notification system
 import QtQuick
 import QtQuick.Layouts
