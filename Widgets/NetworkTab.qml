@@ -213,7 +213,7 @@ Rectangle {
           id: connectionInfoLayout
           Layout.fillWidth: true
           color: "transparent"
-          implicitHeight: 28 * Dat.Globals.notchScale
+          implicitHeight: 23 * Dat.Globals.notchScale
           radius: 20 * Dat.Globals.notchScale
           topLeftRadius: 0
           topRightRadius: 0
@@ -230,8 +230,8 @@ Rectangle {
         
               Text {
                 anchors.fill: parent
-                anchors.margins: 2 * Dat.Globals.notchScale
-                text: " " + root.currentConnection
+                anchors.margins: 20 * Dat.Globals.notchScale
+                text: root.currentConnection
                 color: Dat.Colors.on_surface
                 font.bold: true
                 font.pointSize: 9 * Dat.Globals.notchScale
@@ -264,7 +264,7 @@ Rectangle {
               Text {
                 anchors.fill: parent
                 anchors.margins: 2 * Dat.Globals.notchScale
-                text: root.connectionType + " "
+                text: root.connectionType
                 color: Dat.Colors.on_surface
                 font.pointSize: 9 * Dat.Globals.notchScale
                 horizontalAlignment: Text.AlignRight
