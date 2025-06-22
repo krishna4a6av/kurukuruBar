@@ -79,7 +79,7 @@ Scope {
 
         anchors.fill: parent
         enabled: true
-        debugMode: true // Set to true for debugging
+        debugMode: false // Set to true for debugging
 
       }
       
