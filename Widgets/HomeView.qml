@@ -327,8 +327,8 @@ Rectangle {
                     
                     Rectangle {
                       anchors.centerIn: parent
-                      width: 9 * Dat.Globals.notchScale
-                      height: 9 * Dat.Globals.notchScale
+                      width: 10 * Dat.Globals.notchScale
+                      height: 10 * Dat.Globals.notchScale
                       radius: 6 * Dat.Globals.notchScale
                       color: Dat.Colors.on_primary
                       visible: index === Dat.ThemeManager.currentThemeIndex

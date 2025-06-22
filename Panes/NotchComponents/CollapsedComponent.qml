@@ -19,7 +19,7 @@ Item {
     
     anchors.fill: parent
     radius: 10
-    color: Dat.Colors.withAlpha(Dat.Colors.surface_container, 0.8)
+    color: Dat.Colors.withAlpha(Dat.Colors.surface_container, 0.6)
     border.color: Dat.Colors.withAlpha(Dat.Colors.outline, 0.3)
     border.width: 1
     

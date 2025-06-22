@@ -9,7 +9,8 @@ Singleton {
 
   property string actWinName: activeWindow?.activated ? activeWindow?.appId : "desktop"
   readonly property Toplevel activeWindow: ToplevelManager.activeToplevel
-  property string hostName: "KuruMi"
+  property string hostName: "KuruKuru"
+  property var activeMusicPlayer: null
   property real mprisDotRotation: 0
   property bool notchHovered: false
 
@@ -36,18 +37,10 @@ Singleton {
   // 4 => SettingsView
   property int swipeIndex: 0
   
+  // This singnal for music player
+  signal toggleMusicPlayback()
+  signal previousTrack()
+  signal nextTrack()
 
-  //This code block was to check if the current window is empty ie "desktop"
-  //if yes then turn state from collapsed to expanded
-  //but since active state for my bar is rest for all windows so i have commented it
-  //onActWinNameChanged: {
-  //  if (reservedShell) {
-  //    return;
-  //  }
-  //  if (root.actWinName == "desktop" && root.notchState == "COLLAPSED") {
-  //    root.notchState = "EXPANDED";
-  //  } else if (root.notchState == "EXPANDED" && !root.notchHovered) {
-  //    root.notchState = "COLLAPSED";
-  //  }
-  //}
+
 }

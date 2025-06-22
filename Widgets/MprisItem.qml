@@ -58,6 +58,38 @@ Rectangle {
       }
     }
   }
+  //Signals for keybinds
+  Component.onCompleted: {
+    // Set this as the active player when music view is shown
+    // otherwise all players are simultaneously changed
+    if (Dat.Globals.swipeIndex === 3) {
+      Dat.Globals.activeMusicPlayer = player;
+    }
+    
+    Dat.Globals.swipeIndexChanged.connect(() => {
+      if (Dat.Globals.swipeIndex === 3) {
+        Dat.Globals.activeMusicPlayer = player;
+      }
+    });
+    
+    Dat.Globals.toggleMusicPlayback.connect(() => {
+      if (Dat.Globals.activeMusicPlayer === player) {
+        player.togglePlaying();
+      }
+    });
+  
+    Dat.Globals.previousTrack.connect(() => {
+      if (Dat.Globals.activeMusicPlayer === player) {
+        player.previous();
+      }
+    });
+    
+    Dat.Globals.nextTrack.connect(() => {
+      if (Dat.Globals.activeMusicPlayer === player) {
+        player.next();
+      }
+    });
+  }
 
   MouseArea {
     id: diskMouseArea
