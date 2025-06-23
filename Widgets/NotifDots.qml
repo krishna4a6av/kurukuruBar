@@ -44,7 +44,7 @@ Rectangle {
       radius: this.implicitWidth
       
       icon {
-        icon: (this.active) ? "󰂚" : ""
+        icon: (this.active) ? "󰂚" : "󰂛"
         font.pixelSize: 14 * Dat.Globals.notchScale
       }
       

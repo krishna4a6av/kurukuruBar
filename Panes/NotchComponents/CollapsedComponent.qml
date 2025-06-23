@@ -49,7 +49,7 @@ Item {
       font.family: "Material Symbols Outlined"
       font.pixelSize: root.arrowSize
       text: "" 
-      color: Dat.Colors.onSurface
+      color: Dat.Colors.on_surface
       
       Behavior on color {
         ColorAnimation {
