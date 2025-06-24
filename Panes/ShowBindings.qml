@@ -23,6 +23,7 @@ Popup {
       case Qt.Key_C: return "C";
       case Qt.Key_D: return "D";
       case Qt.Key_N: return "N";
+      case Qt.Key_T: return "T";
       case Qt.Key_Left: return "Left Arrow";
       case Qt.Key_Right: return "Right Arrow";
       case Qt.Key_Up: return "Up Arrow";
@@ -36,7 +37,7 @@ Popup {
   onActiveFocusChanged: if (!activeFocus) close()
 
   background: Rectangle {
-    color: "transparent"
+    color:  Dat.Colors.primary_fixed
     radius: 12 * Dat.Globals.notchScale
 
   }
@@ -45,7 +46,7 @@ Popup {
   Rectangle {
     anchors.fill: parent
     radius: 10 * Dat.Globals.notchScale
-    color: Dat.Colors.surface_container_lowest
+    color: Dat.Colors.surface_container
     border.width: 0
 
     ColumnLayout {
@@ -74,11 +75,17 @@ Popup {
           spacing: 10 * Dat.Globals.notchScale
           Layout.leftMargin: 20 * Dat.Globals.notchScale
 
-          Text {
-            text: modelData.alt ? "Alt + " + keyToString(modelData.key) : keyToString(modelData.key)
-            font.pixelSize: 13 * Dat.Globals.notchScale
-            color: Dat.Colors.primary
+        Text {
+          text: {
+            let prefix = "";
+            if (modelData.alt) prefix += "Alt + ";
+            if (modelData.shift) prefix += "Shift + ";
+            prefix + keyToString(modelData.key);
           }
+          font.pixelSize: 13 * Dat.Globals.notchScale
+          color: Dat.Colors.primary
+        }
+
 
           Text {
             text: "→"

@@ -73,6 +73,18 @@ QtObject {
                     if (component.customShortcut) component.customShortcut("navigate_down");
                 }
             }},
+            { key: Qt.Key_T, alt: true, shift:false, label: "Next Theme", action: function() {
+                const tm = Dat.ThemeManager;
+                const nextIndex = (tm.currentThemeIndex + 1) % tm.themes.length;
+                tm.switchToTheme(nextIndex);
+                if (component.customShortcut) component.customShortcut("switch_theme_next");
+            }},
+            { key: Qt.Key_T, alt: true, shift:true, label: "Previous Theme", action: function() {
+                const tm = Dat.ThemeManager;
+                const prevIndex = (tm.currentThemeIndex - 1 + tm.themes.length) % tm.themes.length;
+                tm.switchToTheme(prevIndex);
+                if (component.customShortcut) component.customShortcut("switch_theme_prev");
+            }},
             { key: Qt.Key_Left, alt: true, label: "Music Previous", action: function() {
                 Dat.Globals.previousTrack();
                 if (component.customShortcut) component.customShortcut("music_previous");
@@ -118,8 +130,11 @@ QtObject {
         const bindings = getKeyBindings(component);
         for (let i = 0; i < bindings.length; i++) {
             const b = bindings[i];
-            const isMatch = b.key === event.key && (!!b.alt === !!(event.modifiers & Qt.AltModifier));
-            if (isMatch) {
+            const altMatch = !!b.alt === !!(event.modifiers & Qt.AltModifier);
+            const shiftMatch = b.shift === undefined || (!!b.shift === !!(event.modifiers & Qt.ShiftModifier));
+            const keyMatch = b.key === event.key;
+    
+            if (keyMatch && altMatch && shiftMatch) {
                 event.accepted = true;
                 try {
                     b.action();
@@ -131,4 +146,5 @@ QtObject {
         }
         return false;
     }
+    
 }
