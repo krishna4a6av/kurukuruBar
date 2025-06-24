@@ -2,7 +2,7 @@
 
 > ## 📽️ Demo
 
-![kurukuruBar Demo](assets/demo.gif)
+![kurukuruBar Demo](Assets/demo.gif)
 
 
 
