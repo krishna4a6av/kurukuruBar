@@ -1,5 +1,3 @@
-// Components/SideBarComponent.qml - collapsible sidebar with hover expand
-// just added the tray elements in this for now, we'll see how this goes.
 import QtQuick
 import "../../Data/" as Dat
 import "../../Panes/" as Panes
@@ -9,14 +7,14 @@ Rectangle {
   
   // Size properties
   readonly property int collapsedHeight: 5 * Dat.Globals.notchScale
-  readonly property int expandedHeight: 38 * Dat.Globals.notchScale
+  readonly property int expandedHeight: 33 * Dat.Globals.notchScale
   property string sideBarState: "COLLAPSED"
   
   // Styling
   bottomLeftRadius: 20 * Dat.Globals.notchScale
   bottomRightRadius: 20 * Dat.Globals.notchScale
-  color: Dat.Colors.withAlpha(Dat.Colors.background, 0)
-  width: parent.width * 0.25
+  color: Dat.Colors.withAlpha(Dat.Colors.background, 1)
+  width: parent.width * 0.19
   height: collapsedHeight
   
   // State management

@@ -121,7 +121,9 @@ Rectangle {
     modal: false
     focus: true
     visible: false
-    z: 999
+
+    clip: false
+
     width: 200 * Dat.Globals.notchScale
     height: 200 * Dat.Globals.notchScale
 
