@@ -263,7 +263,7 @@ Rectangle {
     property bool tracing: false
     property real velocity: 0
     
-    function restOrCollapse() {
+    function expandOrRest() {
       if (fExpToExpTS.running) {
         return;
       }
@@ -282,11 +282,11 @@ Rectangle {
     
     anchors.fill: parent
     hoverEnabled: true
-    Component.onCompleted: fExpToExpTS.runningChanged.connect(notchArea.restOrCollapse)
+    Component.onCompleted: fExpToExpTS.runningChanged.connect(notchArea.expandOrRest)
     
     onContainsMouseChanged: {
       Dat.Globals.notchHovered = notchArea.containsMouse;
-      notchArea.restOrCollapse();
+      notchArea.expandOrRest();
     }
     
     onPositionChanged: mevent => {

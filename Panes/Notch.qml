@@ -25,7 +25,7 @@ Scope {
       color: "transparent"
       exclusionMode: ExclusionMode.Ignore
       focusable: true
-      implicitHeight: screen.height * 0.65
+      implicitHeight: screen.height
       layer: WlrLayer.Top
       namespace: "rexies.notch.quickshell"
       screen: modelData
@@ -79,7 +79,7 @@ Scope {
 
         anchors.fill: parent
         enabled: true
-        debugMode: false // Set to true for debugging
+        debugMode: false // Set to true for debugging screen on top right
 
       }
       

@@ -1,3 +1,4 @@
+//temporarily show whatever
 import QtQuick
 import QtQuick.Layouts
 import "../Data/" as Dat
@@ -9,9 +10,8 @@ RowLayout {
     Layout.fillWidth: true
     color: "transparent"
 
-    Wid.TrayPill{
-      implicitHeight: 20 * Dat.Globals.notchScale
-      radius: 20 * Dat.Globals.notchScale
+    Wid.TimePill{
+
     }
   }
 
