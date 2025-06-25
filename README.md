@@ -1,6 +1,6 @@
 # kurukuruBar
 
-> ## 📽️ Demo
+> ## 📽️ Showcase
 
 ![kurukuruBar Demo](Assets/demo.gif)
 
