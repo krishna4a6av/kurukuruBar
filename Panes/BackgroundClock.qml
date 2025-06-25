@@ -16,7 +16,7 @@ Variants {
     anchors.top: true
     visible: true
 
-    implicitHeight: (screen.height * 0.42) * Dat.Globals.notchScale
+    implicitHeight: (screen.height * 0.38) * Dat.Globals.notchScale
     implicitWidth: (screen.width * 0.42) * Dat.Globals.notchScale
 
     color: "transparent"
@@ -54,7 +54,7 @@ Variants {
 
     Rectangle{
       anchors.fill: parent
-      anchors.margins: 40 * Dat.Globals.notchScale
+      anchors.margins: 28 * Dat.Globals.notchScale
       anchors.leftMargin: 60 * Dat.Globals.notchScale
       color: "transparent"
 
