@@ -13,7 +13,7 @@ Rectangle {
   readonly property int restHeight: 30 * Dat.Globals.notchScale
   readonly property int restWidth: 720 * Dat.Globals.notchScale 
   readonly property int expandedHeight: 33 * Dat.Globals.notchScale
-  readonly property int expandedWidth: 800 * Dat.Globals.notchScale
+  readonly property int expandedWidth: 770 * Dat.Globals.notchScale
   readonly property int fullHeight: 220 * Dat.Globals.notchScale
   readonly property int fullWidth: this.expandedWidth
   property real notchScale: Dat.Globals.notchScale

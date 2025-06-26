@@ -161,7 +161,7 @@ Rectangle {
       // Current theme display when greeter is collapsed
       Rectangle {
         anchors.fill: parent
-        anchors.leftMargin: 20
+        anchors.leftMargin: 20 * Dat.Globals.notchScale
         visible: themeSelectorExpanded
         opacity: themeSelectorExpanded ? 1 : 0
         color: "transparent"
@@ -204,7 +204,7 @@ Rectangle {
     // Right side - Collapsible Theme Selector
     Rectangle {
       Layout.fillHeight: true
-      Layout.preferredWidth: themeSelectorExpanded ? 210 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
+      Layout.preferredWidth: themeSelectorExpanded ? 195 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
       Layout.minimumWidth: themeSelectorExpanded ? 180 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
       Layout.maximumWidth: themeSelectorExpanded ? 250 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
       color: Dat.Colors.surface_container

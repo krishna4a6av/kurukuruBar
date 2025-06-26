@@ -8,7 +8,7 @@ import "../Data/" as Dat
 Rectangle {
   clip: true
   color: Dat.Colors.surface_container_high
-  radius: 20
+  radius: 20 * Dat.Globals.notchScale
 
   ListView {
     anchors.fill: parent
