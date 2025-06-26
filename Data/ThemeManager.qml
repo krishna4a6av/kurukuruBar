@@ -20,15 +20,16 @@ Item {
         { name: "Everforest", file: "Everforest.js" },
         { name: "Kanagawa Red", file: "KanagawaRed.js" },
         { name: "Kanagawa", file: "Kanagawa.js" },
-        { name: "Kanagawa Light", file: "KanagawaLight.js" },
         { name: "Gruvbox", file: "Gruvbox.js" },
         { name: "Graphite", file: "Graphitemono.js" },
-        { name: "Catppucin", file: "Catppuccin.js" },
-        { name: "MagicGirl", file: "MagicGirl.js" },  //op's
+        { name: "Mauve", file: "Mauve.js" },
         { name: "Rosepine", file: "Rosepine.js" },
-        { name: "Crimson", file: "Crimson.js" },
-        { name: "HotRed", file: "Hotred.js" },
+        { name: "Catppucin", file: "Catppuccin.js" },
         { name: "Oxocarbon", file: "Oxocarbon.js" },
+        { name: "Magic Girl", file: "MagicGirl.js" },  //op's
+        { name: "Sakura Dark", file: "SakuraDark.js" },
+        { name: "Sakura", file: "Sakura.js" },
+        { name: "Kanagawa Light", file: "KanagawaLight.js" },
         { name: "Light", file: "Light.js" }, //op's
         //Comment out the theme you don't use to make the selection screen less cluttered
     ]

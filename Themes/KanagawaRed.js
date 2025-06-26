@@ -10,7 +10,7 @@ const theme = {
   on_error: "#43242B",                     // dark peachRed
   on_error_container: "#E6C384",           // lightYellow
   on_primary: "#11111F",                   // sumiInk0 (for contrast)
-  on_primary_container: "#DCD7BA",         // fujiWhite
+  on_primary_container: "#C8C093",         // fujiWhite
   on_primary_fixed: "#1F1F28",             // sumiInk0
   on_primary_fixed_variant: "#223249",     // sumiInk2
   on_secondary: "#727169",                 // fujiGray
@@ -41,7 +41,7 @@ const theme = {
   surface_container: "#2A2A37",            // sumiInk1
   surface_container_high: "#3A3A4D",       // sumiInk3
   surface_container_highest: "#54546D",    // fujiBlue
-  surface_container_low: "#1F1F28",        // sumiInk0
+  surface_container_low: "#181820",        // sumiInk0
   surface_container_lowest: "#121318",     // base black
   surface_dim: "#1F1F28",                  // sumiInk0
   surface_tint: "#7FB4CA",                 // waveBlue2

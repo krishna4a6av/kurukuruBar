@@ -54,7 +54,7 @@ Variants {
 
     Rectangle{
       anchors.fill: parent
-      anchors.margins: 28 * Dat.Globals.notchScale
+      anchors.margins: 40 * Dat.Globals.notchScale
       anchors.leftMargin: 60 * Dat.Globals.notchScale
       color: "transparent"
 
