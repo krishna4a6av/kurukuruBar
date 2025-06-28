@@ -248,7 +248,7 @@ Rectangle {
                   
                   Gen.CircularProgress {
                     anchors.centerIn: parent
-                    size: Math.min(parent.width, parent.height) * 1
+                    size: Math.min(parent.width, parent.height) * 0.96
                     value: formatProgress(speedValue) / 100
                     primaryColor: circleColor
                     secondaryColor: Dat.Colors.primary_container
