@@ -18,8 +18,9 @@ Rectangle {
 
   Text {
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: 5
+    anchors.bottomMargin: 5 * Dat.Globals.notchScale
     anchors.horizontalCenter: parent.horizontalCenter
+    font.pixelSize: 22 * Dat.Globals.notchScale
     color: Dat.Colors.on_surface
     text: "Play some music"
   }
@@ -66,8 +67,8 @@ Rectangle {
 
       color: (index == list.currentIndex) ? "white" : Dat.Colors.withAlpha("white", 0.5)
       height: this.width
-      radius: 6
-      width: 6
+      radius: 6 * Dat.Globals.notchScale
+      width: 6 * Dat.Globals.notchSCale
 
       Behavior on color {
         ColorAnimation {

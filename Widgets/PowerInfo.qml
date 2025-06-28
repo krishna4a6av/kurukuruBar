@@ -20,7 +20,7 @@ RowLayout {
       color: Dat.Colors.on_surface
       font.pointSize: 10 * Dat.Globals.notchScale
       horizontalAlignment: Text.AlignLeft
-      text: "󰂏 " + info.bat.energyCapacity
+      text: "󰂏 " + info.bat.energyCapacity.toFixed(2)
       verticalAlignment: Text.AlignVCenter
     }
   }
@@ -50,7 +50,7 @@ RowLayout {
 
       text: switch (info.bat.state) {
       case UPowerDeviceState.Charging:
-        "  " + ((text.timeToFull[0] > 0) ? text.timeToFull[0] + " hours" : +text.timeToFull[1] + " minutes");
+        " 󰢝 " + ((text.timeToFull[0] > 0) ? text.timeToFull[0] + " hours" : +text.timeToFull[1] + " minutes");
         break;
       case UPowerDeviceState.Discharging:
         "󰥕  " + ((text.timeToEmpty[0] > 0) ? text.timeToEmpty[0] + " hours" : +text.timeToEmpty[1] + " minutes");
@@ -73,7 +73,7 @@ RowLayout {
       color: Dat.Colors.on_surface
       font.pointSize: 10 * Dat.Globals.notchScale
       horizontalAlignment: Text.AlignRight
-      text: "󱐋 " + info.bat.changeRate
+      text: "󱐋 " + info.bat.changeRate.toFixed(2)
       verticalAlignment: Text.AlignVCenter
     }
   }

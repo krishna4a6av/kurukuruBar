@@ -5,7 +5,7 @@
 
 
 BAR_PROC_NAME="quickshell"  # or the actual name of your bar process
-BAR_PATH="$HOME/.config/quickshell/kurukurubar/shell.qml"
+BAR_PATH="$HOME/.config/quickshell/kurukuruBar/shell.qml"
 
 # Check if the bar is running
 if pgrep -f "$BAR_PATH" > /dev/null; then

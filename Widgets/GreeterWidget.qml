@@ -59,11 +59,6 @@ ColumnLayout {
     }
   }
 
-  // Spacer between face and info
-  Item {
-    Layout.fillHeight: true
-  }
-
   Rectangle {
     id: informationRect
     Layout.fillWidth: true

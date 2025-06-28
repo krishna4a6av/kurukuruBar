@@ -57,6 +57,7 @@ Rectangle {
           Text {
             anchors.centerIn: parent
             color: Dat.Colors.on_primary
+            font.pointSize: 12 * Dat.Globals.notchScale
             rotation: -90
             text: Qt.formatDateTime(Dat.Clock?.date, "MMMM")
           }
@@ -68,7 +69,7 @@ Rectangle {
         property int currMonth: parseInt(Qt.formatDateTime(Dat.Clock?.date, "M")) - 1
         Layout.fillHeight: true
         Layout.fillWidth: true
-        spacing: 0
+        spacing: 2
         Layout.leftMargin: 20 * Dat.Globals.notchScale
         Layout.rightMargin: this.Layout.leftMargin
         // color: Dat.Colors.surface_container

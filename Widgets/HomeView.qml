@@ -17,14 +17,14 @@ Rectangle {
   RowLayout {
     anchors.fill: parent
     anchors.margins: 10 * Dat.Globals.notchScale
-    spacing: 12 * Dat.Globals.notchScale
+    spacing: 10 * Dat.Globals.notchScale
     
     // Left side - Greeting and mssg | op's greeting widget
     Rectangle {
       Layout.fillHeight: true
       Layout.fillWidth: !themeSelectorExpanded
       Layout.rightMargin: 10*Dat.Globals.notchScale
-      Layout.preferredWidth: themeSelectorExpanded ? 80 * Dat.Globals.notchScale : 100 * Dat.Globals.notchScale
+      Layout.preferredWidth: themeSelectorExpanded ? 75 * Dat.Globals.notchScale : 100 * Dat.Globals.notchScale
       Layout.minimumWidth: themeSelectorExpanded ? 60 * Dat.Globals.notchScale : 100 * Dat.Globals.notchScale
       color: "transparent"
 
@@ -195,8 +195,15 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             lineHeight: 1
           }
-          
-
+        }
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          cursorShape: Qt.PointingHandCursor
+            
+          onClicked: {
+            themeSelectorExpanded = false
+          }
         }
       }
     }
@@ -204,9 +211,9 @@ Rectangle {
     // Right side - Collapsible Theme Selector
     Rectangle {
       Layout.fillHeight: true
-      Layout.preferredWidth: themeSelectorExpanded ? 195 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
+      Layout.preferredWidth: themeSelectorExpanded ? 190 * Dat.Globals.notchScale : 55 * Dat.Globals.notchScale
       Layout.minimumWidth: themeSelectorExpanded ? 180 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
-      Layout.maximumWidth: themeSelectorExpanded ? 250 * Dat.Globals.notchScale : 50 * Dat.Globals.notchScale
+      Layout.rightMargin: 10
       color: Dat.Colors.surface_container
       radius: 20 * Dat.Globals.notchScale
       
@@ -249,11 +256,11 @@ Rectangle {
         Text {
           anchors.centerIn: parent
           text: "T\nH\nE\nM\nE\nS"
-          font.pixelSize: 13 * Dat.Globals.notchScale
+          font.pixelSize: 14 * Dat.Globals.notchScale
           font.bold: true
           color: Dat.Colors.on_primary
           horizontalAlignment: Text.AlignHCenter
-          lineHeight: 1
+          lineHeight: 0.9
         }
       }
       
@@ -283,7 +290,7 @@ Rectangle {
                 required property var modelData
                 
                 Layout.fillWidth: true
-                Layout.preferredHeight: 45 * Dat.Globals.notchScale
+                Layout.preferredHeight: 40 * Dat.Globals.notchScale
                 
                 color: mouseArea.containsMouse ? 
                        Dat.Colors.surface_container_high : 
@@ -339,7 +346,7 @@ Rectangle {
                   Text {
                     Layout.fillWidth: true
                     text: modelData.name
-                    font.pixelSize: 14 * Dat.Globals.notchScale
+                    font.pixelSize: 13 * Dat.Globals.notchScale
                     font.weight: index === Dat.ThemeManager.currentThemeIndex ? 
                                 Font.DemiBold : Font.Normal
                     color: index === Dat.ThemeManager.currentThemeIndex ? 
@@ -350,10 +357,10 @@ Rectangle {
 
                   //Tick on right of active theme
                   Text {
-                    Layout.preferredWidth: 12 * Dat.Globals.notchScale
+                    Layout.preferredWidth: 15 * Dat.Globals.notchScale
                     Layout.preferredHeight: 12 * Dat.Globals.notchScale
                     text: "✓"
-                    font.pixelSize: 12 * Dat.Globals.notchScale
+                    font.pixelSize: 14 * Dat.Globals.notchScale
                     font.weight: Font.Bold
                     color: Dat.Colors.primary
                     horizontalAlignment: Text.AlignHCenter
@@ -408,7 +415,7 @@ Rectangle {
             Text {
               anchors.centerIn: parent
               text: ""
-              font.pixelSize: 16 * Dat.Globals.notchScale
+              font.pixelSize: 13 * Dat.Globals.notchScale
               font.weight: Font.Bold
               color: Dat.Colors.on_surface
             }
