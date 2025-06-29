@@ -8,7 +8,7 @@ Item {
     // Set application identifiers at the very beginning
     // don't know why they are needed but not having them gives a warning which botheres me but it should work fine without this
     property bool _initialized: {
-        Qt.application.organization = "Kurubar"
+        Qt.application.organization = "kurukurubar"
         Qt.application.domain = "kurubar.app"
         Qt.application.name = "Kurubar"
         return true

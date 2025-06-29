@@ -54,8 +54,8 @@ Variants {
 
     Rectangle{
       anchors.fill: parent
-      anchors.margins: 40 * Dat.Globals.notchScale
-      anchors.leftMargin: 60 * Dat.Globals.notchScale
+      anchors.margins: 60 * Dat.Globals.notchScale
+      anchors.topMargin: 70 * Dat.Globals.notchScale
       color: "transparent"
 
       // Main clock container
