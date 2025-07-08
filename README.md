@@ -33,7 +33,7 @@
         ~/.config/quickshell/kurukuruBar/Scripts/toggle_kuru.sh
         ```
 
-4.  **(Optional) Keybinding:** For easy access, bind the toggle script to a key in your window manager's configuration. Since the script is location-aware, you can call it using its absolute path.
+4.  **(Optional) Keybinding:** For easy access, bind the toggle script to a key in your window manager's configuration.(Make sure to update the path in toggle_Script.sh if you move it from the /scripts folder)
 
 
 # kurukuruBar Dependencies
@@ -56,8 +56,9 @@ This is an auto-generated list of dependencies for kurukuruBar based on its file
 *   **Material Symbols Rounded**
 *   **FiraCode Nerd Font**
 
-# To keep in mind: 
-it is built around hyprland, so running it on other DE or WM might varying sucess. It should work but some components will not, And will require chnages/debugging.
+
+
+    * ** To keep in mind: This is built around hyprland, so running it on other DE or WM might varying sucess. It should work but some components will not, And will require chnages/debugging.**
 
 
 >To see all the keybinds while the bar is running press alt+/
