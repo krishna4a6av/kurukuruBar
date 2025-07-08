@@ -7,7 +7,7 @@
 
 ## Getting Started
 
-1.  **Install Dependencies:** Make sure you have quickshell installed on your system. You can install it from the package manager or from the source, check and follow install directions [here](https://quickshell.outfoxxed.me/docs/guide/install-setup/)
+1.  **Install Quickshell:** Make sure you have quickshell installed on your system. You can install it from the package manager or from the source, check and follow install directions [here](https://quickshell.outfoxxed.me/docs/guide/install-setup/)
 
 2.  **Clone the Repository:** Clone the repository to your desired location. The example below uses `~/.config/quickshell/kurukuruBar` where i have it personally.
     ```bash
