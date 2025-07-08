@@ -5,7 +5,8 @@
 
 
 BAR_PROC_NAME="quickshell"  # or the actual name of your bar process
-BAR_PATH="$HOME/.config/quickshell/kurukuruBar/shell.qml"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+BAR_PATH="$SCRIPT_DIR/../shell.qml"
 
 # Check if the bar is running
 if pgrep -f "$BAR_PATH" > /dev/null; then
