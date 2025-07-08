@@ -58,7 +58,7 @@ This is an auto-generated list of dependencies for kurukuruBar based on its file
 
 
 
-    * ** To keep in mind: This is built around hyprland, so running it on other DE or WM might varying sucess. It should work but some components will not, And will require chnages/debugging.**
+> *  To keep in mind: This is built around hyprland, so running it on other DE or WM might varying sucess. It should work but some components will not, And will require chnages/debugging.
 
 
 >To see all the keybinds while the bar is running press alt+/
