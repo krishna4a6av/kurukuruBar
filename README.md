@@ -3,7 +3,7 @@
 > ## 📽️ Showcase
 
 ![kurukuruBar Demo](Assets/demo.gif)
-
+> Colors are kinda off in this gif will replace it with a vid later
 
 ## Getting Started
 
