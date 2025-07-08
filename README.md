@@ -51,6 +51,7 @@ This is an auto-generated list of dependencies for kurukuruBar based on its file
 *   **gpurecording:** A script or application for screen recording.
 *   **nmcli:** Used for network information.
 *   **systemctl:** Used for session management (suspend, reboot, poweroff).
+
 **Fonts used**
 *   **Material Symbols Rounded**
 *   **FiraCode Nerd Font**
