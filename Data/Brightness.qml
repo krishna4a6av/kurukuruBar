@@ -57,7 +57,6 @@ Item {
     stdout: SplitParser {
       onRead: data => {
         let output = String(data).trim();
-        console.log("Brightness percent (SplitParser):", JSON.stringify(output));
 
         let percent = parseInt(output);
         if (!isNaN(percent)) {
