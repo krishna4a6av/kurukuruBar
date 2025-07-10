@@ -69,7 +69,7 @@ ColumnLayout {
     Text {
       anchors.centerIn: parent
       color: Dat.Colors.on_surface
-      font.pointSize: 14*Dat.Globals.notchScale
+      font.pointSize: 13*Dat.Globals.notchScale
       text: "Hello there!"
     }
   }

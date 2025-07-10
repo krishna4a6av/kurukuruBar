@@ -17,7 +17,7 @@ Rectangle {
 
   color: "transparent"
   implicitWidth: (trayLayout.implicitWidth + 18) * Dat.Globals.notchScale
-  implicitHeight: 21 * Dat.Globals.notchScale
+  implicitHeight: 22 * Dat.Globals.notchScale
 
   Rectangle{
     anchors.fill: parent
@@ -124,8 +124,8 @@ Rectangle {
 
     clip: false
 
-    width: 200 * Dat.Globals.notchScale
-    height: 200 * Dat.Globals.notchScale
+    width: 220 * Dat.Globals.notchScale
+    height: 230 * Dat.Globals.notchScale
 
     x: (systemTray.width - width) / 2
     y: systemTray.height
@@ -139,7 +139,6 @@ Rectangle {
         color: "transparent"
         border.width: 1 * Dat.Globals.notchScale
         radius: (parent.radius + 1) * Dat.Globals.notchScale
-        z: -1
       }
     }
 
@@ -166,6 +165,10 @@ Rectangle {
           easing.type: Easing.InOutQuad
         }
       }
+    }
+
+    Component.onCompleted: {
+      Dat.Globals.trayPopup = trayPopup;
     }
 
   }

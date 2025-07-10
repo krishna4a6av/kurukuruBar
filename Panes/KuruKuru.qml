@@ -263,7 +263,6 @@ Rectangle {
           id: smoll
 
           anchors.fill: parent
-          anchors.rightMargin: 8 * Dat.Globals.notchScale
           fillMode: Image.PreserveAspectCrop
           horizontalAlignment: Image.AlignRight
           playing: parent.playing && smoll.visible
@@ -274,7 +273,7 @@ Rectangle {
         AnimatedImage {
           id: big
 
-          anchors.bottomMargin: -13 * Dat.Globals.notchScale
+          anchors.bottomMargin: -23 * Dat.Globals.notchScale
           anchors.fill: parent
           fillMode: Image.PreserveAspectFit
           horizontalAlignment: Image.AlignRight

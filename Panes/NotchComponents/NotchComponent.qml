@@ -219,6 +219,30 @@ Rectangle {
       }
     },
     Transition {
+      from: "FULLY_EXPANDED"
+      to: "REST"
+      SequentialAnimation {
+        PropertyAction {
+          property: "visible"
+          target: expandedPane
+        }
+        ParallelAnimation {
+          NumberAnimation {
+            duration: Dat.MaterialEasing.standardDecelTime
+            easing.bezierCurve: Dat.MaterialEasing.standardDecel
+            property: "height"
+            target: notchRect
+          }
+          NumberAnimation {
+            duration: Dat.MaterialEasing.standardTime * 3
+            easing.bezierCurve: Dat.MaterialEasing.standard
+            property: "opacity"
+            target: expandedPane
+          }
+        }
+      }
+    },
+    Transition {
       id: fExpToExpTS
       from: "FULLY_EXPANDED"
       to: "EXPANDED"
@@ -276,7 +300,12 @@ Rectangle {
       if (notchArea.containsMouse) {
         Dat.Globals.notchState = "EXPANDED";
       } else {
-        Dat.Globals.notchState = "REST";
+        //ensures notch is does not change state when the popup is open
+        if (Dat.Globals.trayPopup?.visible){
+          return;
+        }else{
+          Dat.Globals.notchState = "REST";
+        }
       }
     }
     

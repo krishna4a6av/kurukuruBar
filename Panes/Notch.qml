@@ -1,4 +1,3 @@
-// Main Notch.qml - simplified and modular
 // Its components are put in components folder where to finalize them is not decided by me yet :/
 import QtQuick
 import QtQuick.Layouts
@@ -41,9 +40,9 @@ Scope {
         Region {
           item: collapsedIndicatorComponent
         }
-        //Region {
-        //  item: sideBarComponent
-        //}
+        Region {
+          item: popupComponent
+        }
       }
       
       // Main notch component
@@ -84,12 +83,11 @@ Scope {
       }
       
       // Sidebar component under work for now 
-      //Components.SideBarComponent {
-      //  id: sideBarComponent
-      //  anchors.right: parent.right
-      //  anchors.top: parent.top
-      //  anchors.rightMargin: 20 * Dat.Globals.notchScale
-      //}
+      Components.PopupComponent {
+        id: popupComponent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+      }
     }
   }
 }

@@ -20,8 +20,10 @@ QtObject {
                 }
                 if (component.toggleNotch) component.toggleNotch();
             }},
-            { key: Qt.Key_Escape, alt: false, label: "Reset to Expanded", action: function() {
-                Dat.Globals.notchState = "EXPANDED";
+            { key: Qt.Key_Escape, alt: false, label: "Exit fullyexpaded state", action: function() {
+                if (Dat.Globals.notchState === "FULLY_EXPANDED"){
+                    Dat.Globals.notchState = "EXPANDED";
+                }
             }},
             { key: Qt.Key_C, alt: false, label: "Toggle Collapse", action: function() {
                 if (Dat.Globals.notchState === "COLLAPSED") {

@@ -14,8 +14,12 @@ Singleton {
   property real mprisDotRotation: 0
   property bool notchHovered: false
 
+  //psystray popup
+  property var trayPopup: null
+
+
   // change by small scale at a time.
-  property real notchScale: 0.93
+  property real notchScale: 1
 
   // one of "COLLAPSED", "EXPANDED", "FULLY_EXPANDED","REST"
   property string notchState: (reservedShell) ? "EXPANDED" : "REST"
