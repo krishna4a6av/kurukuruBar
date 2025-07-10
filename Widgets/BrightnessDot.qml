@@ -9,18 +9,23 @@ Rectangle {
   // Array of brightness icons for different states
   property var brightnessIcons: ["", "", "", "", "", "", "", "", ""]
   
-  // Track brightness level internally
-  property int brightnessLevel: 4 // Start at middle brightness (index 4)
-  
-  // Track click count for alternating behavior
-  property int clickCount: 0
-  
-  // Track scroll count for alternating behavior
-  property int scrollCount: 0
-  
-  // Function to get current brightness icon
+  // Function to get current brightness icon based on actual brightness percentage
   function getBrightnessIcon() {
-    return brightnessIcons[brightnessLevel];
+    var currentPercent = Dat.Brightness.getCurrentBrightnessPercent()
+    
+    // Map percentage to icon index (0-8)
+    var iconIndex = 0;
+    if (currentPercent >= 90) iconIndex = 8;
+    else if (currentPercent >= 80) iconIndex = 7;
+    else if (currentPercent >= 70) iconIndex = 6;
+    else if (currentPercent >= 60) iconIndex = 5;
+    else if (currentPercent >= 50) iconIndex = 4;
+    else if (currentPercent >= 40) iconIndex = 3;
+    else if (currentPercent >= 30) iconIndex = 2;
+    else if (currentPercent >= 20) iconIndex = 1;
+    else iconIndex = 0;
+    
+    return brightnessIcons[iconIndex];
   }
   
   Text {
@@ -36,33 +41,17 @@ Rectangle {
     onClicked: mevent => {
       switch (mevent.button) {
       case Qt.RightButton:
-        brightnessButton.clickCount++;
-        if (brightnessButton.clickCount % 2 === 0 && brightnessButton.brightnessLevel < 9) {
-          brightnessButton.brightnessLevel++;
-        }
         Dat.Brightness.increase();
         break;
       case Qt.LeftButton:
-        brightnessButton.clickCount++;
-        if (brightnessButton.clickCount % 2 === 0 && brightnessButton.brightnessLevel > 0) {
-          brightnessButton.brightnessLevel--;
-        }
         Dat.Brightness.decrease();
         break;
       }
     }
     onWheel: event => {
       if (event.angleDelta.y > 0) {
-        brightnessButton.scrollCount++;
-        if (brightnessButton.scrollCount % 2 === 0 && brightnessButton.brightnessLevel < 8) {
-          brightnessButton.brightnessLevel++;
-        }
         Dat.Brightness.increase();
       } else {
-        brightnessButton.scrollCount++;
-        if (brightnessButton.scrollCount % 2 === 0 && brightnessButton.brightnessLevel > 0) {
-          brightnessButton.brightnessLevel--;
-        }
         Dat.Brightness.decrease();
       }
     }
