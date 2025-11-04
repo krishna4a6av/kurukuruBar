@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import "../Data/" as Dat
 
 Scope {
   Variants {
@@ -17,7 +18,7 @@ Scope {
       color: "transparent"
       exclusionMode: ExclusionMode.Auto
       focusable: false
-      implicitHeight: 28
+      implicitHeight: 30 * Dat.Globals.notchScale
       layer: WlrLayer.Top
       namespace: "rexies.notch.quickshell"
       screen: modelData

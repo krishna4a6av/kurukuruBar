@@ -16,8 +16,8 @@ Variants {
     anchors.top: true
     visible: true
 
-    implicitHeight: (screen.height * 0.38) * Dat.Globals.notchScale
-    implicitWidth: (screen.width * 0.42) * Dat.Globals.notchScale
+    implicitHeight: (screen.height * 0.38)
+    implicitWidth: (screen.width * 0.42)
 
     color: "transparent"
     focusable: false
