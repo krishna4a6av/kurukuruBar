@@ -16,7 +16,6 @@ Item {
     }
     
     property bool enabled: true
-    property bool debugMode: false
     
     // Signals
     signal toggleNotch()

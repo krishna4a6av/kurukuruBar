@@ -37,20 +37,24 @@ Rectangle {
         visible: (entry.modelData?.enabled && !entry.modelData?.isSeparator) ?? true
         onClicked: {
           if (entry.modelData?.hasChildren) {
-            // Creates a new TrayItemMenu for the submenu instead of reassigning trayMenu
+            // Creates a new TrayItemMenu for the submenu
             var submenu = Qt.createComponent("TrayItemMenu.qml").createObject(root.parent, {
               trayMenu: entry.child,
               width: root.width,
               height: root.height
             });
             
-            // Connect the submenu's navigation signals
+            // Connect the submenu's navigation signals to propagate up
             submenu.navigateToSubmenu.connect(root.navigateToSubmenu);
             submenu.navigateBack.connect(root.navigateBack);
             
             root.navigateToSubmenu(submenu);
           } else {
             entry.modelData?.triggered();
+            // Close the popup after triggering an action
+            if (Dat.Globals.trayPopup) {
+              Dat.Globals.trayPopup.close();
+            }
           }
         }
       }
